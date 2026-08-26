@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Öffnungszeiten — Bäckerei 2000</title>
+<title>Reservierung — Bäckerei 2000</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -137,36 +137,72 @@
 
   section { padding-bottom: 4.5rem; }
 
-  table.hours-full {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 34rem;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 1rem;
+  .reservation-form {
+    display: grid;
+    gap: 1.1rem;
+    max-width: 28rem;
   }
-  table.hours-full td {
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-  table.hours-full td:first-child { color: var(--muted); }
-  table.hours-full td:last-child {
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-  }
-  table.hours-full tr.closed td:last-child { color: var(--accent); }
-  table.hours-full tr.feiertag td { padding-top: 1.3rem; }
 
-  .note-card {
-    margin-top: 2.2rem;
-    max-width: 34rem;
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+
+  .reservation-form label {
+    display: grid;
+    gap: 0.4rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .reservation-form input,
+  .reservation-form textarea {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1rem;
+    color: var(--ink);
     background: var(--paper-raised);
     border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    padding: 1.4rem 1.6rem;
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.8rem;
+    resize: vertical;
+    width: 100%;
   }
-  .note-card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-  .note-card p + p { margin-top: 0.6rem; }
-  .note-card strong { color: var(--ink); }
+  .reservation-form input:focus,
+  .reservation-form textarea:focus {
+    outline: 2px solid var(--focus);
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+
+  .btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    text-decoration: none;
+    padding: 0.75rem 1.3rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--ink);
+    transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    cursor: pointer;
+  }
+  .btn:hover { transform: translateY(-1px); }
+
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--paper);
+  }
+  .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+
+  .reservation-form button { justify-self: start; }
+
+  .form-note {
+    margin: 0;
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+  }
 
   .back-link {
     display: inline-block;
@@ -194,6 +230,7 @@
 
   @media (max-width: 720px) {
     .nav-links { gap: 0.9rem 1.1rem; flex-wrap: wrap; width: 100%; }
+    .form-row { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -202,8 +239,8 @@
     <a class="logo" href="index.html">Bäckerei <span>2000</span></a>
     <ul class="nav-links">
       <li><a href="speisekarte.html">Speisekarte</a></li>
-      <li><a href="reservierung.html">Reservierung</a></li>
-      <li><a class="current" href="oeffnungszeiten.html">Öffnungszeiten</a></li>
+      <li><a class="current" href="reservierung.html">Reservierung</a></li>
+      <li><a href="oeffnungszeiten.html">Öffnungszeiten</a></li>
       <li><a href="index.html#anfahrt">Anfahrt</a></li>
     </ul>
   </nav>
@@ -211,32 +248,49 @@
 
 <main>
   <div class="wrap page-head">
-    <p class="eyebrow">Öffnungszeiten</p>
-    <h1>Wann bei uns die Ofentür offen steht.</h1>
-    <p>Unter der Woche früh für Pendler, am Wochenende etwas gemütlicher. An Feiertagen gilt die
-      Sonntagszeit.</p>
+    <p class="eyebrow">Reservierung</p>
+    <h1>Reserviere deinen Tisch.</h1>
+    <p>Ob schnelle Kaffeepause zwischen zwei Zügen oder gemütliches Frühstück am Wochenende — sag uns
+      kurz Bescheid, dann halten wir dir einen Platz frei.</p>
   </div>
 
   <section>
     <div class="wrap">
-      <table class="hours-full">
-        <tr><td>Montag</td><td>07:00 – 18:00</td></tr>
-        <tr><td>Dienstag</td><td>07:00 – 18:00</td></tr>
-        <tr><td>Mittwoch</td><td>07:00 – 18:00</td></tr>
-        <tr><td>Donnerstag</td><td>07:00 – 18:00</td></tr>
-        <tr><td>Freitag</td><td>07:00 – 19:00</td></tr>
-        <tr><td>Samstag</td><td>08:00 – 15:00</td></tr>
-        <tr><td>Sonntag</td><td>09:00 – 13:00</td></tr>
-        <tr class="feiertag"><td>Feiertage</td><td>09:00 – 13:00</td></tr>
-        <tr class="closed"><td>24. &amp; 31. Dezember</td><td>Geschlossen</td></tr>
-      </table>
-
-      <div class="note-card">
-        <p><strong>Sonntagsverkauf:</strong> Von 9 bis 13 Uhr gibt es frische Brötchen, Kuchen und Kaffee
-          zum Mitnehmen — ideal für Reisende vom Bahnhof gegenüber.</p>
-        <p>Über Weihnachten und Silvester können die Zeiten kurzfristig abweichen. Aktuelles posten wir
-          immer vorab am Eingang und auf Instagram.</p>
-      </div>
+      <form class="reservation-form" onsubmit="return sendReservationMail(this)">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label>
+          <span>E-Mail</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>
+          <span>Telefon (optional)</span>
+          <input type="tel" name="phone" autocomplete="tel">
+        </label>
+        <div class="form-row">
+          <label>
+            <span>Datum</span>
+            <input type="date" name="date" required>
+          </label>
+          <label>
+            <span>Uhrzeit</span>
+            <input type="time" name="time" required>
+          </label>
+        </div>
+        <label>
+          <span>Personen</span>
+          <input type="number" name="guests" min="1" max="12" value="2" required>
+        </label>
+        <label>
+          <span>Besondere Wünsche (optional)</span>
+          <textarea name="message" rows="3"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Reservierung anfragen</button>
+        <p class="form-note">Öffnet dein E-Mail-Programm mit den Reservierungsdetails an
+          hallo@baeckerei2000-goettingen.de.</p>
+      </form>
 
       <a class="back-link" href="index.html">← Zurück zur Startseite</a>
     </div>
@@ -247,3 +301,33 @@
   <span>© 2026 Bäckerei 2000, Bahnhofsplatz 1, Göttingen</span>
   <span>Gebacken mit Sauerteig, nicht mit Abkürzungen</span>
 </footer>
+
+<script>
+  function sendReservationMail(form) {
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const date = form.date.value;
+    const time = form.time.value;
+    const guests = form.guests.value;
+    const message = form.message.value.trim();
+    const subject = "Tischreservierung von " + name + " am " + date;
+    const bodyLines = [
+      "Datum: " + date,
+      "Uhrzeit: " + time,
+      "Personen: " + guests,
+      "Telefon: " + (phone || "—"),
+      "",
+      message,
+      "",
+      "—",
+      name,
+      email
+    ];
+    const mailto = "mailto:hallo@baeckerei2000-goettingen.de"
+      + "?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(bodyLines.join("\n"));
+    window.location.href = mailto;
+    return false;
+  }
+</script>
