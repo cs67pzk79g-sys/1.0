@@ -193,30 +193,34 @@
   .roll-scene {
     width: 190px;
     height: 190px;
+    -webkit-perspective: 800px;
     perspective: 800px;
   }
 
-  .roll-tilt {
+  .roll-body {
     width: 100%;
     height: 100%;
     position: relative;
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    transform: rotateX(55deg);
-  }
-
-  .roll-spin {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
+    -webkit-animation: roll-spin 16s linear infinite;
     animation: roll-spin 16s linear infinite;
   }
+  @-webkit-keyframes roll-spin {
+    from { -webkit-transform: rotateX(55deg) rotateY(0deg); }
+    to { -webkit-transform: rotateX(55deg) rotateY(360deg); }
+  }
   @keyframes roll-spin {
-    from { transform: rotateY(0deg); }
-    to { transform: rotateY(360deg); }
+    from { transform: rotateX(55deg) rotateY(0deg); }
+    to { transform: rotateX(55deg) rotateY(360deg); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .roll-spin { animation: none; }
+    .roll-body {
+      -webkit-animation: none;
+      animation: none;
+      -webkit-transform: rotateX(55deg);
+      transform: rotateX(55deg);
+    }
   }
 
   .roll-layers span {
@@ -228,19 +232,19 @@
     border-radius: 50%;
     background: color-mix(in srgb, #C98A4A calc((1 - var(--t)) * 100%), #9C6530);
   }
-  .roll-layers span:nth-child(1) { --t: 0; transform: rotateX(90deg) translateZ(0px); }
-  .roll-layers span:nth-child(2) { --t: 0.083; transform: rotateX(90deg) translateZ(-3.4px); }
-  .roll-layers span:nth-child(3) { --t: 0.167; transform: rotateX(90deg) translateZ(-6.8px); }
-  .roll-layers span:nth-child(4) { --t: 0.25; transform: rotateX(90deg) translateZ(-10.2px); }
-  .roll-layers span:nth-child(5) { --t: 0.333; transform: rotateX(90deg) translateZ(-13.6px); }
-  .roll-layers span:nth-child(6) { --t: 0.417; transform: rotateX(90deg) translateZ(-17px); }
-  .roll-layers span:nth-child(7) { --t: 0.5; transform: rotateX(90deg) translateZ(-20.4px); }
-  .roll-layers span:nth-child(8) { --t: 0.583; transform: rotateX(90deg) translateZ(-23.8px); }
-  .roll-layers span:nth-child(9) { --t: 0.667; transform: rotateX(90deg) translateZ(-27.2px); }
-  .roll-layers span:nth-child(10) { --t: 0.75; transform: rotateX(90deg) translateZ(-30.6px); }
-  .roll-layers span:nth-child(11) { --t: 0.833; transform: rotateX(90deg) translateZ(-34px); }
-  .roll-layers span:nth-child(12) { --t: 0.917; transform: rotateX(90deg) translateZ(-37.4px); }
-  .roll-layers span:nth-child(13) { --t: 1; transform: rotateX(90deg) translateZ(-40.8px); }
+  .roll-layers span:nth-child(1) { --t: 0; -webkit-transform: rotateX(90deg) translateZ(0px); transform: rotateX(90deg) translateZ(0px); }
+  .roll-layers span:nth-child(2) { --t: 0.083; -webkit-transform: rotateX(90deg) translateZ(-3.4px); transform: rotateX(90deg) translateZ(-3.4px); }
+  .roll-layers span:nth-child(3) { --t: 0.167; -webkit-transform: rotateX(90deg) translateZ(-6.8px); transform: rotateX(90deg) translateZ(-6.8px); }
+  .roll-layers span:nth-child(4) { --t: 0.25; -webkit-transform: rotateX(90deg) translateZ(-10.2px); transform: rotateX(90deg) translateZ(-10.2px); }
+  .roll-layers span:nth-child(5) { --t: 0.333; -webkit-transform: rotateX(90deg) translateZ(-13.6px); transform: rotateX(90deg) translateZ(-13.6px); }
+  .roll-layers span:nth-child(6) { --t: 0.417; -webkit-transform: rotateX(90deg) translateZ(-17px); transform: rotateX(90deg) translateZ(-17px); }
+  .roll-layers span:nth-child(7) { --t: 0.5; -webkit-transform: rotateX(90deg) translateZ(-20.4px); transform: rotateX(90deg) translateZ(-20.4px); }
+  .roll-layers span:nth-child(8) { --t: 0.583; -webkit-transform: rotateX(90deg) translateZ(-23.8px); transform: rotateX(90deg) translateZ(-23.8px); }
+  .roll-layers span:nth-child(9) { --t: 0.667; -webkit-transform: rotateX(90deg) translateZ(-27.2px); transform: rotateX(90deg) translateZ(-27.2px); }
+  .roll-layers span:nth-child(10) { --t: 0.75; -webkit-transform: rotateX(90deg) translateZ(-30.6px); transform: rotateX(90deg) translateZ(-30.6px); }
+  .roll-layers span:nth-child(11) { --t: 0.833; -webkit-transform: rotateX(90deg) translateZ(-34px); transform: rotateX(90deg) translateZ(-34px); }
+  .roll-layers span:nth-child(12) { --t: 0.917; -webkit-transform: rotateX(90deg) translateZ(-37.4px); transform: rotateX(90deg) translateZ(-37.4px); }
+  .roll-layers span:nth-child(13) { --t: 1; -webkit-transform: rotateX(90deg) translateZ(-40.8px); transform: rotateX(90deg) translateZ(-40.8px); }
 
   .roll-top {
     position: absolute;
@@ -249,6 +253,7 @@
     left: 0;
     top: 0;
     border-radius: 50%;
+    -webkit-transform: rotateX(90deg) translateZ(-44.2px);
     transform: rotateX(90deg) translateZ(-44.2px);
     background: repeating-radial-gradient(circle at 50% 50%, #C97A44 0 9px, #E8B879 9px 18px);
     box-shadow: inset 0 0 0 6px #D99A55, 0 2px 14px rgba(0, 0, 0, 0.28);
@@ -260,6 +265,7 @@
     height: 190px;
     left: 0;
     top: 0;
+    -webkit-transform: rotateX(90deg) translateZ(-45.2px);
     transform: rotateX(90deg) translateZ(-45.2px);
   }
   .roll-icing span {
@@ -380,18 +386,16 @@
 
       <div class="menu-feature">
         <div class="roll-scene" aria-hidden="true">
-          <div class="roll-tilt">
-            <div class="roll-spin">
-              <div class="roll-layers">
-                <span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span>
-                <span></span>
-              </div>
-              <div class="roll-top"></div>
-              <div class="roll-icing">
-                <span></span><span></span><span></span>
-              </div>
+          <div class="roll-body">
+            <div class="roll-layers">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span>
+            </div>
+            <div class="roll-top"></div>
+            <div class="roll-icing">
+              <span></span><span></span><span></span>
             </div>
           </div>
           <div class="roll-shadow"></div>
