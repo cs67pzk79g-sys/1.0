@@ -2,7 +2,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<title>Reservierung — Bäckerei 2000</title>
+<title>Datenschutzerklärung — Bäckerei 2000</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -129,7 +129,6 @@
     transition: border-color 0.15s ease;
   }
   .nav-links a:hover { border-color: var(--accent); }
-  .nav-links a.current { border-color: var(--accent); color: var(--accent); }
 
   .page-head {
     padding: 4rem 0 2.5rem;
@@ -142,76 +141,22 @@
 
   section { padding-bottom: 4.5rem; }
 
-  .reservation-form {
-    display: grid;
-    gap: 1.1rem;
-    max-width: 28rem;
-  }
+  .legal { max-width: 38rem; display: grid; gap: 2.2rem; }
 
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.1rem;
+  .legal-group h2 {
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
   }
-
-  .reservation-form label {
-    display: grid;
-    gap: 0.4rem;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-
-  .reservation-form input,
-  .reservation-form textarea {
-    font-family: "Source Serif 4", Georgia, serif;
-    font-size: 1rem;
-    color: var(--ink);
-    background: var(--paper-raised);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
-    padding: 0.65rem 0.8rem;
-    resize: vertical;
-    width: 100%;
-  }
-  .reservation-form input:focus,
-  .reservation-form textarea:focus {
-    outline: 2px solid var(--focus);
-    outline-offset: 1px;
-    border-color: var(--accent);
-  }
-
-  .btn {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.85rem;
-    text-decoration: none;
-    padding: 0.75rem 1.3rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--ink);
-    transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
-    cursor: pointer;
-  }
-  .btn:hover { transform: translateY(-1px); }
-
-  .btn-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--paper);
-  }
-  .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
-
-  .reservation-form button { justify-self: start; }
-
-  .form-note {
+  .legal-group p {
     margin: 0;
     color: var(--muted);
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
   }
+  .legal-group p + p { margin-top: 0.7rem; }
+  .legal-group a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
   .back-link {
     display: inline-block;
-    margin-top: 2.4rem;
+    margin-top: 0.6rem;
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.85rem;
     text-decoration: none;
@@ -236,7 +181,6 @@
 
   @media (max-width: 720px) {
     .nav-links { gap: 0.9rem 1.1rem; flex-wrap: wrap; width: 100%; }
-    .form-row { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -251,7 +195,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="speisekarte.html">Speisekarte</a></li>
-      <li><a class="current" href="reservierung.html">Reservierung</a></li>
+      <li><a href="reservierung.html">Reservierung</a></li>
       <li><a href="oeffnungszeiten.html">Öffnungszeiten</a></li>
       <li><a href="index.html#anfahrt">Anfahrt</a></li>
     </ul>
@@ -260,49 +204,72 @@
 
 <main>
   <div class="wrap page-head">
-    <p class="eyebrow">Reservierung</p>
-    <h1>Reserviere deinen Tisch.</h1>
-    <p>Ob schnelle Kaffeepause zwischen zwei Zügen oder gemütliches Frühstück am Wochenende — sag uns
-      kurz Bescheid, dann halten wir dir einen Platz frei.</p>
+    <p class="eyebrow">Datenschutz</p>
+    <h1>Datenschutzerklärung.</h1>
   </div>
 
   <section>
-    <div class="wrap">
-      <form class="reservation-form" onsubmit="return sendReservationMail(this)">
-        <label>
-          <span>Name</span>
-          <input type="text" name="name" required autocomplete="name">
-        </label>
-        <label>
-          <span>E-Mail</span>
-          <input type="email" name="email" required autocomplete="email">
-        </label>
-        <label>
-          <span>Telefon (optional)</span>
-          <input type="tel" name="phone" autocomplete="tel">
-        </label>
-        <div class="form-row">
-          <label>
-            <span>Datum</span>
-            <input type="date" name="date" required>
-          </label>
-          <label>
-            <span>Uhrzeit</span>
-            <input type="time" name="time" required>
-          </label>
-        </div>
-        <label>
-          <span>Personen</span>
-          <input type="number" name="guests" min="1" max="12" value="2" required>
-        </label>
-        <label>
-          <span>Besondere Wünsche (optional)</span>
-          <textarea name="message" rows="3"></textarea>
-        </label>
-        <button type="submit" class="btn btn-primary">Reservierung anfragen</button>
-        <p class="form-note">Öffnet dein E-Mail-Programm mit den Reservierungsdetails an
-          hallo@baeckerei2000-goettingen.de.</p>
-      </form>
+    <div class="wrap legal">
+      <div class="legal-group">
+        <h2>1. Verantwortlicher</h2>
+        <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+        <p>Bäckerei 2000, Inh. Jonas Brandt<br>
+          Bahnhofsplatz 1, 37073 Göttingen<br>
+          E-Mail: <a href="mailto:hallo@baeckerei2000-goettingen.de">hallo@baeckerei2000-goettingen.de</a></p>
+      </div>
+
+      <div class="legal-group">
+        <h2>2. Hosting</h2>
+        <p>Diese Website wird bei GitHub Pages gehostet, einem Angebot der GitHub, Inc.,
+          88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf der Seite verarbeitet
+          GitHub als Auftragsverarbeiter automatisch Zugriffsdaten (u. a. IP-Adresse, Datum und Uhrzeit
+          des Zugriffs, aufgerufene Seite) in sogenannten Server-Log-Dateien. Diese Daten sind nicht
+          bestimmten Personen zuordenbar und werden nicht mit anderen Datenquellen zusammengeführt.</p>
+      </div>
+
+      <div class="legal-group">
+        <h2>3. Keine Cookies, keine Analyse-Tools</h2>
+        <p>Diese Website setzt keine Cookies und keine Tracking- oder Analysewerkzeuge
+          (z. B. Google Analytics) ein.</p>
+      </div>
+
+      <div class="legal-group">
+        <h2>4. Google Fonts</h2>
+        <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Google Fonts,
+          bereitgestellt von Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland
+          ("Google"). Beim Aufruf der Seite wird eine Verbindung zu den Servern von Google aufgebaut,
+          wodurch Google Ihre IP-Adresse erfassen kann. Weitere Informationen zum Umgang mit
+          Nutzerdaten finden Sie in der Datenschutzerklärung von Google:
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+      </div>
+
+      <div class="legal-group">
+        <h2>5. Reservierungsformular</h2>
+        <p>Über das Reservierungsformular eingegebene Angaben (Name, E-Mail, Telefon, Datum, Uhrzeit,
+          Personenzahl, Nachricht) werden ausschließlich lokal in Ihrem Browser zu einer E-Mail
+          zusammengefasst und über Ihr eigenes E-Mail-Programm an uns versendet. Diese Website hat
+          keinen eigenen Server-Backend-Betrieb — es findet keine Speicherung oder Verarbeitung dieser
+          Daten auf unserer Seite statt. Die eigentliche Übermittlung erfolgt erst, wenn Sie die
+          vorausgefüllte E-Mail in Ihrem E-Mail-Programm tatsächlich absenden.</p>
+      </div>
+
+      <div class="legal-group">
+        <h2>6. Ihre Rechte</h2>
+        <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
+          personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung
+          und ggf. ein Recht auf Berichtigung, Einschränkung oder Löschung dieser Daten. Hierzu sowie
+          zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit über die oben
+          genannte Adresse an uns wenden.</p>
+        <p>Ihnen steht außerdem ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu, etwa der
+          Landesbeauftragten für den Datenschutz Niedersachsen.</p>
+      </div>
+
+      <div class="legal-group">
+        <h2>7. SSL-/TLS-Verschlüsselung</h2>
+        <p>Diese Website nutzt aus Sicherheitsgründen eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte
+          Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://"
+          wechselt.</p>
+      </div>
 
       <a class="back-link" href="index.html">← Zurück zur Startseite</a>
     </div>
@@ -317,33 +284,3 @@
     <a href="datenschutz.html">Datenschutz</a>
   </span>
 </footer>
-
-<script>
-  function sendReservationMail(form) {
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const phone = form.phone.value.trim();
-    const date = form.date.value;
-    const time = form.time.value;
-    const guests = form.guests.value;
-    const message = form.message.value.trim();
-    const subject = "Tischreservierung von " + name + " am " + date;
-    const bodyLines = [
-      "Datum: " + date,
-      "Uhrzeit: " + time,
-      "Personen: " + guests,
-      "Telefon: " + (phone || "—"),
-      "",
-      message,
-      "",
-      "—",
-      name,
-      email
-    ];
-    const mailto = "mailto:hallo@baeckerei2000-goettingen.de"
-      + "?subject=" + encodeURIComponent(subject)
-      + "&body=" + encodeURIComponent(bodyLines.join("\n"));
-    window.location.href = mailto;
-    return false;
-  }
-</script>
