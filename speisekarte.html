@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bäckerei 2000</title>
+<title>Speisekarte — Bäckerei 2000</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -47,11 +47,6 @@
 
   * { box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-  }
-
   body {
     margin: 0;
     background: var(--paper);
@@ -76,10 +71,7 @@
   }
 
   a { color: inherit; }
-  a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 3px;
-  }
+  a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
   .eyebrow {
     font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -89,7 +81,6 @@
     color: var(--accent);
   }
 
-  /* Header */
   header {
     position: sticky;
     top: 0;
@@ -111,8 +102,8 @@
     font-weight: 700;
     font-size: 1.25rem;
     letter-spacing: -0.02em;
+    text-decoration: none;
   }
-
   .logo span { color: var(--accent); }
 
   .nav-links {
@@ -124,7 +115,6 @@
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.85rem;
   }
-
   .nav-links a {
     text-decoration: none;
     border-bottom: 1px solid transparent;
@@ -132,87 +122,61 @@
     transition: border-color 0.15s ease;
   }
   .nav-links a:hover { border-color: var(--accent); }
+  .nav-links a.current { border-color: var(--accent); color: var(--accent); }
 
-  /* Hero */
-  .hero {
-    padding: 5.5rem 0 4.5rem;
+  .page-head {
+    padding: 4rem 0 2.5rem;
+    max-width: 40rem;
     display: grid;
-    gap: 1.4rem;
-    max-width: 42rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    font-weight: 700;
-    line-height: 1.08;
-    animation: rise 0.7s ease both;
-  }
-
-  .hero p.lede {
-    font-size: 1.15rem;
-    color: var(--muted);
-    max-width: 34rem;
-    animation: rise 0.7s ease 0.08s both;
-  }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero h1, .hero p.lede { animation: none; }
-  }
-
-  .cta-row {
-    display: flex;
-    gap: 0.9rem;
-    flex-wrap: wrap;
-    margin-top: 0.4rem;
-  }
-
-  .btn {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.85rem;
-    text-decoration: none;
-    padding: 0.75rem 1.3rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--ink);
-    transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
-  }
-  .btn:hover { transform: translateY(-1px); }
-
-  .btn-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--paper);
-  }
-  .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--ink);
-  }
-  .btn-ghost:hover { background: var(--paper-raised); }
-
-  /* Section shell */
-  section { padding: 4rem 0; border-top: 1px solid var(--line); }
-
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 2.2rem;
-    flex-wrap: wrap;
+  }
+  .page-head h1 { font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 700; line-height: 1.1; }
+  .page-head p { color: var(--muted); font-size: 1.08rem; margin: 0; }
+
+  section { padding-bottom: 4.5rem; }
+
+  .band {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
   }
 
-  .section-head h2 { font-size: 1.7rem; }
+  .menu-group { margin-bottom: 1.8rem; }
+  .menu-group:last-child { margin-bottom: 0; }
 
-  /* Speisekarte-Teaser */
-  .teaser {
+  .menu-group h3 {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--olive);
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+  }
+
+  .menu-list { list-style: none; margin: 0; padding: 0; }
+
+  .menu-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .menu-list li:last-child { border-bottom: none; }
+
+  .menu-list em {
+    font-style: normal;
     color: var(--muted);
-    max-width: 30rem;
-    margin: 0 0 1.1rem;
+    font-size: 0.92em;
+  }
+
+  .menu-list li span:last-child {
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    white-space: nowrap;
   }
 
   /* 3D-modellierte Zimtschnecke */
@@ -334,93 +298,17 @@
     margin-bottom: 0.3rem;
   }
 
-  /* Hours + location */
-  .band {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 3rem;
-  }
-
-  table.hours {
-    border-collapse: collapse;
-    width: 100%;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.95rem;
-  }
-
-  table.hours td {
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  table.hours td:first-child { color: var(--muted); }
-  table.hours td:last-child {
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-  }
-
-  table.hours tr.closed td:last-child { color: var(--accent); }
-
-  .link-more {
+  .back-link {
     display: inline-block;
-    margin-top: 1.1rem;
+    margin-top: 2.4rem;
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.85rem;
     text-decoration: none;
     border-bottom: 1px solid var(--accent);
     padding-bottom: 2px;
     color: var(--accent);
-    transition: opacity 0.15s ease;
   }
-  .link-more:hover { opacity: 0.75; }
-
-  .maps-btn {
-    display: inline-block;
-    margin: 0.2rem 0 1.4rem;
-  }
-
-  .map-pin {
-    width: 34px;
-    height: 34px;
-    border-radius: 50% 50% 50% 0;
-    background: var(--accent);
-    transform: rotate(-45deg);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  .map-pin::after {
-    content: "";
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--paper);
-    transform: rotate(45deg);
-  }
-
-  address {
-    font-style: normal;
-    font-size: 1.05rem;
-  }
-  address .street { display: block; margin-bottom: 0.2rem; }
-  address .note {
-    display: block;
-    margin-top: 0.7rem;
-    color: var(--muted);
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.85rem;
-  }
-
-  .contact-line {
-    margin-top: 1.4rem;
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.88rem;
-  }
-  .contact-line a { text-decoration: underline; text-underline-offset: 3px; }
+  .back-link:hover { opacity: 0.75; }
 
   footer {
     border-top: 1px solid var(--line);
@@ -442,38 +330,53 @@
 
 <header>
   <nav class="wrap nav">
-    <div class="logo">Bäckerei <span>2000</span></div>
+    <a class="logo" href="index.html">Bäckerei <span>2000</span></a>
     <ul class="nav-links">
-      <li><a href="speisekarte.html">Speisekarte</a></li>
+      <li><a class="current" href="speisekarte.html">Speisekarte</a></li>
       <li><a href="oeffnungszeiten.html">Öffnungszeiten</a></li>
-      <li><a href="#anfahrt">Anfahrt</a></li>
+      <li><a href="index.html#anfahrt">Anfahrt</a></li>
     </ul>
   </nav>
 </header>
 
 <main>
-  <div class="wrap hero">
-    <p class="eyebrow">Bäckerei am Bahnhofsplatz, Göttingen</p>
-    <h1>Jeden Morgen frisch aus dem Steinofen.</h1>
-    <p class="lede">Bäckerei 2000 backt seit 2014 Sauerteigbrote, Laugengebäck und Kuchen für Reisende und
-      Nachbarschaft am Bahnhofsplatz. Kein Fertigmehl, keine Abkürzungen — nur Zeit, Mehl und ein zwölf Jahre
-      alter Sauerteig.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="oeffnungszeiten.html">Öffnungszeiten</a>
-      <a class="btn btn-ghost" href="#anfahrt">Anfahrt</a>
-    </div>
+  <div class="wrap page-head">
+    <p class="eyebrow">Speisekarte</p>
+    <h1>Was heute aus dem Steinofen kommt.</h1>
+    <p>Sauerteigbrote, Laugengebäck und Kaffee — täglich frisch gebacken, nie vom Vortag.</p>
   </div>
 
-  <section id="speisekarte">
+  <section>
     <div class="wrap band">
       <div>
-        <div class="section-head">
-          <h2>Speisekarte</h2>
-          <p class="eyebrow">Täglich frisch</p>
+        <div class="menu-group">
+          <h3>Brote</h3>
+          <ul class="menu-list">
+            <li><span>Roggensauerteig <em>(Laib)</em></span><span>4,80 €</span></li>
+            <li><span>Dinkelvollkorn <em>(Laib)</em></span><span>4,50 €</span></li>
+            <li><span>Wochenbrot <em>(wechselnd)</em></span><span>4,20 €</span></li>
+          </ul>
         </div>
-        <p class="teaser">Sauerteigbrote, Laugengebäck, hausgemachte Zimtschnecken und Kaffee von Elbgold —
-          alles frisch aus dem Steinofen, mit Preisen zum Nachschauen.</p>
-        <a class="link-more" href="speisekarte.html">Ganze Speisekarte ansehen →</a>
+
+        <div class="menu-group">
+          <h3>Gebäck</h3>
+          <ul class="menu-list">
+            <li><span>Laugenbrezel</span><span>1,80 €</span></li>
+            <li><span>Zimtschnecke</span><span>2,90 €</span></li>
+            <li><span>Butter-Croissant</span><span>2,20 €</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-group">
+          <h3>Kaffee &amp; Kuchen</h3>
+          <ul class="menu-list">
+            <li><span>Espresso</span><span>2,50 €</span></li>
+            <li><span>Cappuccino</span><span>3,20 €</span></li>
+            <li><span>Kuchen des Tages <em>(Stück)</em></span><span>3,50 €</span></li>
+          </ul>
+        </div>
+
+        <a class="back-link" href="index.html">← Zurück zur Startseite</a>
       </div>
 
       <div class="menu-feature">
@@ -494,38 +397,6 @@
           <div class="roll-shadow"></div>
         </div>
         <p class="feature-caption"><strong>Zimtschnecke des Tages</strong><br>Handgerollt mit Zimt-Zuckerkaramell, direkt aus dem Ofen.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="anfahrt">
-    <div class="wrap band">
-      <div class="hours-teaser">
-        <div class="section-head">
-          <h2>Öffnungszeiten</h2>
-        </div>
-        <table class="hours">
-          <tr><td>Montag – Freitag</td><td>07:00 – 18:00</td></tr>
-          <tr><td>Samstag</td><td>08:00 – 15:00</td></tr>
-          <tr><td>Sonntag</td><td>09:00 – 13:00</td></tr>
-        </table>
-        <a class="link-more" href="oeffnungszeiten.html">Alle Zeiten &amp; Feiertage ansehen →</a>
-      </div>
-      <div>
-        <div class="section-head">
-          <h2>Anfahrt</h2>
-        </div>
-        <span class="map-pin" aria-hidden="true"></span>
-        <address>
-          <span class="street">Bahnhofsplatz 1</span>
-          37073 Göttingen
-          <span class="note">Direkt am Göttingen Hauptbahnhof.</span>
-        </address>
-        <a class="btn btn-primary maps-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Bahnhofspl.%201%2C%2037073%20G%C3%B6ttingen" target="_blank" rel="noopener">In Google Maps öffnen ↗</a>
-        <div class="contact-line">
-          <a href="tel:+495511234567">0551 12 34 567</a>
-          <a href="mailto:hallo@baeckerei2000-goettingen.de">hallo@baeckerei2000-goettingen.de</a>
-        </div>
       </div>
     </div>
   </section>
