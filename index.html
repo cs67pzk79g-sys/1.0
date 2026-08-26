@@ -1,43 +1,45 @@
-<title>Kornkammer</title>
+<title>Bäckerei 2000</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --ink: #2B2118;
-    --paper: #F4ECDA;
-    --paper-raised: #EEE1C4;
-    --accent: #A23E2E;
-    --accent-soft: #C97A63;
-    --olive: #6E7C4C;
-    --muted: #7A6A54;
-    --line: rgba(43, 33, 24, 0.16);
+    --ink: #3A2E22;
+    --paper: #FBF6EB;
+    --paper-raised: #F5EAD2;
+    --accent: #C1573F;
+    --accent-soft: #D98F7A;
+    --olive: #8B9863;
+    --muted: #8F7E68;
+    --line: rgba(58, 46, 34, 0.14);
     --focus: #2F6FED;
+    --radius-lg: 16px;
+    --radius-sm: 10px;
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --ink: #F3E9D6;
-      --paper: #211812;
-      --paper-raised: #2C211A;
-      --accent: #E2795F;
-      --accent-soft: #C4573E;
-      --olive: #9FB073;
-      --muted: #B9A88F;
-      --line: rgba(243, 233, 214, 0.16);
+      --ink: #F7EFDD;
+      --paper: #2E2117;
+      --paper-raised: #3A2B1F;
+      --accent: #EB8A6E;
+      --accent-soft: #D97A5E;
+      --olive: #B4C68C;
+      --muted: #C9B99C;
+      --line: rgba(247, 239, 221, 0.16);
     }
   }
 
   :root[data-theme="dark"] {
-    --ink: #F3E9D6;
-    --paper: #211812;
-    --paper-raised: #2C211A;
-    --accent: #E2795F;
-    --accent-soft: #C4573E;
-    --olive: #9FB073;
-    --muted: #B9A88F;
-    --line: rgba(243, 233, 214, 0.16);
+    --ink: #F7EFDD;
+    --paper: #2E2117;
+    --paper-raised: #3A2B1F;
+    --accent: #EB8A6E;
+    --accent-soft: #D97A5E;
+    --olive: #B4C68C;
+    --muted: #C9B99C;
+    --line: rgba(247, 239, 221, 0.16);
   }
 
   * { box-sizing: border-box; }
@@ -170,7 +172,7 @@
     font-size: 0.85rem;
     text-decoration: none;
     padding: 0.75rem 1.3rem;
-    border-radius: 2px;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--ink);
     transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
   }
@@ -213,7 +215,7 @@
   .card {
     background: var(--paper-raised);
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: var(--radius-lg);
     padding: 1.6rem 1.5rem;
   }
 
@@ -324,7 +326,7 @@
 
 <header>
   <nav class="wrap nav">
-    <div class="logo">Korn<span>kammer</span></div>
+    <div class="logo">Bäckerei <span>2000</span></div>
     <ul class="nav-links">
       <li><a href="#angebot">Angebot</a></li>
       <li><a href="#zeiten">Öffnungszeiten</a></li>
@@ -337,7 +339,7 @@
   <div class="wrap hero">
     <p class="eyebrow">Bäckerei in Hamburg-Eppendorf</p>
     <h1>Jeden Morgen frisch aus dem Steinofen.</h1>
-    <p class="lede">Kornkammer backt seit 2014 Sauerteigbrote, Laugengebäck und Kuchen für die Nachbarschaft
+    <p class="lede">Bäckerei 2000 backt seit 2014 Sauerteigbrote, Laugengebäck und Kuchen für die Nachbarschaft
       an der Isestraße. Kein Fertigmehl, keine Abkürzungen — nur Zeit, Mehl und ein zwölf Jahre alter
       Sauerteig.</p>
     <div class="cta-row">
@@ -397,7 +399,7 @@
         </address>
         <div class="contact-line">
           <a href="tel:+494012345678">040 12 34 56 78</a>
-          <a href="mailto:hallo@kornkammer-hamburg.de">hallo@kornkammer-hamburg.de</a>
+          <a href="mailto:hallo@baeckerei2000-hamburg.de">hallo@baeckerei2000-hamburg.de</a>
         </div>
       </div>
     </div>
@@ -405,6 +407,6 @@
 </main>
 
 <footer class="wrap">
-  <span>© 2026 Kornkammer, Isestraße 42, Hamburg</span>
+  <span>© 2026 Bäckerei 2000, Isestraße 42, Hamburg</span>
   <span>Gebacken mit Sauerteig, nicht mit Abkürzungen</span>
 </footer>
