@@ -103,6 +103,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
     padding: 1.1rem 0;
   }
 
@@ -427,6 +429,49 @@
   }
   .contact-line a { text-decoration: underline; text-underline-offset: 3px; }
 
+  /* Kontakt */
+  .contact-form {
+    display: grid;
+    gap: 1.1rem;
+    max-width: 26rem;
+    margin-top: 0.4rem;
+  }
+
+  .contact-form label {
+    display: grid;
+    gap: 0.4rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.8rem;
+    resize: vertical;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: 2px solid var(--focus);
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+
+  .contact-form button { justify-self: start; }
+
+  .form-note {
+    margin: 0;
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+  }
+
   footer {
     border-top: 1px solid var(--line);
     padding: 2rem 0;
@@ -440,7 +485,7 @@
   }
 
   @media (max-width: 720px) {
-    .nav-links { gap: 1.1rem; }
+    .nav-links { gap: 0.9rem 1.1rem; flex-wrap: wrap; width: 100%; }
     .band { grid-template-columns: 1fr; gap: 2.2rem; }
   }
 </style>
@@ -452,6 +497,7 @@
       <li><a href="speisekarte.html">Speisekarte</a></li>
       <li><a href="oeffnungszeiten.html">Öffnungszeiten</a></li>
       <li><a href="#anfahrt">Anfahrt</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
     </ul>
   </nav>
 </header>
@@ -533,9 +579,50 @@
       </div>
     </div>
   </section>
+
+  <section id="kontakt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Kontakt</h2>
+        <p class="eyebrow">Fragen, Feedback, Sonderbestellungen</p>
+      </div>
+      <form class="contact-form" onsubmit="return sendContactMail(this)">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label>
+          <span>E-Mail</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>
+          <span>Nachricht</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Nachricht senden</button>
+        <p class="form-note">Öffnet dein E-Mail-Programm mit vorausgefüllter Nachricht an
+          hallo@baeckerei2000-goettingen.de.</p>
+      </form>
+    </div>
+  </section>
 </main>
 
 <footer class="wrap">
   <span>© 2026 Bäckerei 2000, Bahnhofsplatz 1, Göttingen</span>
   <span>Gebacken mit Sauerteig, nicht mit Abkürzungen</span>
 </footer>
+
+<script>
+  function sendContactMail(form) {
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    const subject = "Kontaktanfrage von " + name;
+    const body = message + "\n\n—\n" + name + "\n" + email;
+    const mailto = "mailto:hallo@baeckerei2000-goettingen.de"
+      + "?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(body);
+    window.location.href = mailto;
+    return false;
+  }
+</script>

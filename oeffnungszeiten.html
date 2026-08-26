@@ -94,6 +94,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
     padding: 1.1rem 0;
   }
 
@@ -191,7 +193,7 @@
   }
 
   @media (max-width: 720px) {
-    .nav-links { gap: 1.1rem; }
+    .nav-links { gap: 0.9rem 1.1rem; flex-wrap: wrap; width: 100%; }
   }
 </style>
 
@@ -202,6 +204,7 @@
       <li><a href="speisekarte.html">Speisekarte</a></li>
       <li><a class="current" href="oeffnungszeiten.html">Öffnungszeiten</a></li>
       <li><a href="index.html#anfahrt">Anfahrt</a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
     </ul>
   </nav>
 </header>
