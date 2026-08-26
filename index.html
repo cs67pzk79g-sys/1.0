@@ -208,35 +208,163 @@
 
   .section-head h2 { font-size: 1.7rem; }
 
-  /* Angebot cards */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
+  /* Speisekarte */
+  .menu-group { margin-bottom: 1.8rem; }
+  .menu-group:last-child { margin-bottom: 0; }
 
-  .card {
-    background: var(--paper-raised);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    padding: 1.6rem 1.5rem;
-  }
-
-  .card .num {
+  .menu-group h3 {
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--olive);
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+  }
+
+  .menu-list { list-style: none; margin: 0; padding: 0; }
+
+  .menu-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .menu-list li:last-child { border-bottom: none; }
+
+  .menu-list em {
+    font-style: normal;
+    color: var(--muted);
+    font-size: 0.92em;
+  }
+
+  .menu-list li span:last-child {
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* 3D-modellierte Zimtschnecke */
+  .menu-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.3rem;
+    height: 100%;
+  }
+
+  .roll-scene {
+    width: 190px;
+    height: 190px;
+    perspective: 800px;
+  }
+
+  .roll-tilt {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(58deg);
+  }
+
+  .roll-spin {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: roll-spin 16s linear infinite;
+  }
+  @keyframes roll-spin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .roll-spin { animation: none; }
+  }
+
+  .barrel span {
+    position: absolute;
+    width: 47px;
+    height: 56px;
+    left: 50%;
+    top: 50%;
+    margin-left: -23.5px;
+    margin-top: -28px;
+    background: linear-gradient(to bottom, #E8B879 0%, #D9995B 55%, #B9743A 100%);
+  }
+  .barrel span:nth-child(1) { transform: rotateY(0deg) translateZ(88px); filter: brightness(1.18); }
+  .barrel span:nth-child(2) { transform: rotateY(30deg) translateZ(88px); filter: brightness(1.08); }
+  .barrel span:nth-child(3) { transform: rotateY(60deg) translateZ(88px); filter: brightness(0.98); }
+  .barrel span:nth-child(4) { transform: rotateY(90deg) translateZ(88px); filter: brightness(0.88); }
+  .barrel span:nth-child(5) { transform: rotateY(120deg) translateZ(88px); filter: brightness(0.8); }
+  .barrel span:nth-child(6) { transform: rotateY(150deg) translateZ(88px); filter: brightness(0.74); }
+  .barrel span:nth-child(7) { transform: rotateY(180deg) translateZ(88px); filter: brightness(0.7); }
+  .barrel span:nth-child(8) { transform: rotateY(210deg) translateZ(88px); filter: brightness(0.74); }
+  .barrel span:nth-child(9) { transform: rotateY(240deg) translateZ(88px); filter: brightness(0.8); }
+  .barrel span:nth-child(10) { transform: rotateY(270deg) translateZ(88px); filter: brightness(0.88); }
+  .barrel span:nth-child(11) { transform: rotateY(300deg) translateZ(88px); filter: brightness(0.98); }
+  .barrel span:nth-child(12) { transform: rotateY(330deg) translateZ(88px); filter: brightness(1.08); }
+
+  .roll-top {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    transform: rotateX(90deg) translateZ(28px);
+    background: repeating-radial-gradient(circle at 50% 50%, #C97A44 0 9px, #E8B879 9px 18px);
+    box-shadow: inset 0 0 0 6px #D99A55, 0 2px 14px rgba(0, 0, 0, 0.28);
+  }
+
+  .roll-icing {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    left: 0;
+    top: 0;
+    transform: rotateX(90deg) translateZ(29px);
+  }
+  .roll-icing span {
+    position: absolute;
+    height: 8px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(255, 251, 242, 0.95), rgba(255, 251, 242, 0.55));
+  }
+  .roll-icing span:nth-child(1) { top: 55px; left: 30px; width: 130px; transform: rotate(9deg); }
+  .roll-icing span:nth-child(2) { top: 90px; left: 20px; width: 155px; transform: rotate(-6deg); }
+  .roll-icing span:nth-child(3) { top: 122px; left: 35px; width: 120px; transform: rotate(11deg); }
+  .roll-icing span:nth-child(4) { top: 40px; left: 75px; width: 40px; height: 40px; border-radius: 50%; transform: rotate(0deg); }
+
+  .roll-shadow {
+    width: 150px;
+    height: 26px;
+    margin: -14px auto 0;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(31, 61, 58, 0.22), transparent);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .roll-shadow { background: radial-gradient(closest-side, rgba(0, 0, 0, 0.4), transparent); }
+  }
+  :root[data-theme="dark"] .roll-shadow { background: radial-gradient(closest-side, rgba(0, 0, 0, 0.4), transparent); }
+
+  .feature-caption {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 16rem;
+  }
+  .feature-caption strong {
     display: block;
-    margin-bottom: 0.9rem;
+    color: var(--ink);
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
   }
-
-  .card h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.55rem;
-    font-weight: 600;
-  }
-
-  .card p { color: var(--muted); font-size: 0.98rem; margin: 0; }
 
   /* Hours + location */
   .band {
@@ -340,7 +468,6 @@
 
   @media (max-width: 720px) {
     .nav-links { gap: 1.1rem; }
-    .cards { grid-template-columns: 1fr; }
     .band { grid-template-columns: 1fr; gap: 2.2rem; }
   }
 </style>
@@ -349,7 +476,7 @@
   <nav class="wrap nav">
     <div class="logo">Bäckerei <span>2000</span></div>
     <ul class="nav-links">
-      <li><a href="#angebot">Angebot</a></li>
+      <li><a href="#speisekarte">Speisekarte</a></li>
       <li><a href="oeffnungszeiten.html">Öffnungszeiten</a></li>
       <li><a href="#anfahrt">Anfahrt</a></li>
     </ul>
@@ -369,29 +496,60 @@
     </div>
   </div>
 
-  <section id="angebot">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Angebot</h2>
-        <p class="eyebrow">Täglich frisch</p>
+  <section id="speisekarte">
+    <div class="wrap band">
+      <div>
+        <div class="section-head">
+          <h2>Speisekarte</h2>
+          <p class="eyebrow">Täglich frisch</p>
+        </div>
+
+        <div class="menu-group">
+          <h3>Brote</h3>
+          <ul class="menu-list">
+            <li><span>Roggensauerteig <em>(Laib)</em></span><span>4,80 €</span></li>
+            <li><span>Dinkelvollkorn <em>(Laib)</em></span><span>4,50 €</span></li>
+            <li><span>Wochenbrot <em>(wechselnd)</em></span><span>4,20 €</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-group">
+          <h3>Gebäck</h3>
+          <ul class="menu-list">
+            <li><span>Laugenbrezel</span><span>1,80 €</span></li>
+            <li><span>Zimtschnecke</span><span>2,90 €</span></li>
+            <li><span>Butter-Croissant</span><span>2,20 €</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-group">
+          <h3>Kaffee &amp; Kuchen</h3>
+          <ul class="menu-list">
+            <li><span>Espresso</span><span>2,50 €</span></li>
+            <li><span>Cappuccino</span><span>3,20 €</span></li>
+            <li><span>Kuchen des Tages <em>(Stück)</em></span><span>3,50 €</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="cards">
-        <div class="card">
-          <span class="num">Brote</span>
-          <h3>Sauerteig &amp; Vollkorn</h3>
-          <p>Roggensauerteig, Dinkelvollkorn und ein wechselndes Wochenbrot — jeden Tag neu gebacken,
-            nie vom Vortag.</p>
+
+      <div class="menu-feature">
+        <div class="roll-scene" aria-hidden="true">
+          <div class="roll-tilt">
+            <div class="roll-spin">
+              <div class="barrel">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="roll-top"></div>
+              <div class="roll-icing">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+          <div class="roll-shadow"></div>
         </div>
-        <div class="card">
-          <span class="num">Gebäck</span>
-          <h3>Laugen &amp; Blätterteig</h3>
-          <p>Laugenbrezeln, Zimtschnecken und Butter-Croissants, ab sieben Uhr warm aus dem Ofen.</p>
-        </div>
-        <div class="card">
-          <span class="num">Kaffee &amp; Kuchen</span>
-          <h3>Elbgold-Espresso</h3>
-          <p>Espresso von der Rösterei Elbgold, dazu ein Stück aus der wechselnden Kuchenvitrine.</p>
-        </div>
+        <p class="feature-caption"><strong>Zimtschnecke des Tages</strong><br>Handgerollt mit Zimt-Zuckerkaramell, direkt aus dem Ofen.</p>
       </div>
     </div>
   </section>
