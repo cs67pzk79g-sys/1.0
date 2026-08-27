@@ -104,8 +104,11 @@
 
   .panel { background: var(--panel); border-radius: var(--radius-card); padding: 1.75rem clamp(1.25rem, 4vw, 2.25rem); }
 
-  .menu-group + .menu-group { margin-top: 1.75rem; }
+  .menu-group + .menu-group { margin-top: 2rem; }
   .menu-group h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -113,21 +116,39 @@
     font-weight: 600;
     margin-bottom: 0.6rem;
   }
+  .menu-group h3 svg { flex-shrink: 0; }
   .menu-list { list-style: none; margin: 0; padding: 0; }
   .menu-list li {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     gap: 1rem;
-    padding: 0.7rem 0;
+    padding: 0.85rem 0;
     border-bottom: 1px solid var(--line);
   }
   .menu-list li:last-child { border-bottom: none; }
   .menu-list em { font-style: normal; color: var(--muted); font-size: 0.92em; }
-  .menu-list li span:last-child {
+
+  .item-name { font-weight: 500; }
+  .item-desc { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+  .item-price {
     font-variant-numeric: tabular-nums;
     font-weight: 500;
     color: var(--muted);
+    white-space: nowrap;
+  }
+  .badge {
+    display: inline-block;
+    margin-left: 0.45rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    color: var(--accent);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    vertical-align: 0.1em;
     white-space: nowrap;
   }
 
@@ -198,27 +219,108 @@
     <div class="wrap band">
       <div class="panel">
         <div class="menu-group">
-          <h3>Brote</h3>
+          <h3>
+            <svg width="17" height="17" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M4 21C4 12.7 9 8 16 8C23 8 28 12.7 28 21C28 24.9 22.6 26.5 16 26.5C9.4 26.5 4 24.9 4 21Z" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M11 13.5L13.5 18M16 12.5V17.5M21 13.5L18.5 18" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Brote
+          </h3>
           <ul class="menu-list">
-            <li><span>Roggensauerteig <em>(Laib)</em></span><span>4,80 €</span></li>
-            <li><span>Dinkelvollkorn <em>(Laib)</em></span><span>4,50 €</span></li>
-            <li><span>Wochenbrot <em>(wechselnd)</em></span><span>4,20 €</span></li>
+            <li>
+              <div>
+                <span class="item-name">Roggensauerteig <em>(Laib)</em><span class="badge">Vegan</span></span>
+                <p class="item-desc">1,2 kg, mit Sauerteig „Berta“ getrieben. Hält eine Woche im
+                  Leinentuch und wird dabei nur besser.</p>
+              </div>
+              <span class="item-price">4,80 €</span>
+            </li>
+            <li>
+              <div>
+                <span class="item-name">Dinkelvollkorn <em>(Laib)</em><span class="badge">Vegan</span></span>
+                <p class="item-desc">Voller Korn, mild und nussig. Dinkel aus der Rosdorfer Mühle,
+                  18 Stunden geführt.</p>
+              </div>
+              <span class="item-price">4,50 €</span>
+            </li>
+            <li>
+              <div>
+                <span class="item-name">Wochenbrot <em>(wechselnd)</em><span class="badge">Jede Woche neu</span></span>
+                <p class="item-desc">Was Jonas gerade ausprobiert — mal Walnuss, mal Kürbiskern,
+                  mal Roggen mit Fenchel.</p>
+              </div>
+              <span class="item-price">4,20 €</span>
+            </li>
           </ul>
         </div>
         <div class="menu-group">
-          <h3>Gebäck</h3>
+          <h3>
+            <svg width="17" height="17" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 16a2 2 0 0 1 0 4a4 4 0 0 1 0-8a6 6 0 0 1 0 12a8 8 0 0 1 0-16" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Gebäck
+          </h3>
           <ul class="menu-list">
-            <li><span>Laugenbrezel</span><span>1,80 €</span></li>
-            <li><span>Zimtschnecke</span><span>2,90 €</span></li>
-            <li><span>Butter-Croissant</span><span>2,20 €</span></li>
+            <li>
+              <div>
+                <span class="item-name">Laugenbrezel</span>
+                <p class="item-desc">Über Nacht geführt, morgens von Hand geschlungen, grobes
+                  Meersalz obendrauf.</p>
+              </div>
+              <span class="item-price">1,80 €</span>
+            </li>
+            <li>
+              <div>
+                <span class="item-name">Zimtschnecke<span class="badge">Beliebt</span></span>
+                <p class="item-desc">Handgerollt mit Zimt-Zuckerkaramell. Freitags backen wir die
+                  doppelte Menge und sind trotzdem mittags durch.</p>
+              </div>
+              <span class="item-price">2,90 €</span>
+            </li>
+            <li>
+              <div>
+                <span class="item-name">Butter-Croissant</span>
+                <p class="item-desc">Reine Butter, 27 Lagen, drei Tage Zeit. Am besten vor neun Uhr,
+                  solange es noch warm ist.</p>
+              </div>
+              <span class="item-price">2,20 €</span>
+            </li>
           </ul>
         </div>
         <div class="menu-group">
-          <h3>Kaffee &amp; Kuchen</h3>
+          <h3>
+            <svg width="17" height="17" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M6 12h16v7a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-7Z" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M22 14.5h2.5a3 3 0 0 1 0 6H22" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M11 5v3.5M16 5v3.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Kaffee &amp; Kuchen
+          </h3>
           <ul class="menu-list">
-            <li><span>Espresso</span><span>2,50 €</span></li>
-            <li><span>Cappuccino</span><span>3,20 €</span></li>
-            <li><span>Kuchen des Tages <em>(Stück)</em></span><span>3,50 €</span></li>
+            <li>
+              <div>
+                <span class="item-name">Espresso</span>
+                <p class="item-desc">Elbgold-Bohnen aus Hamburg, dunkle Röstung. Doppelt für
+                  50 Cent mehr.</p>
+              </div>
+              <span class="item-price">2,50 €</span>
+            </li>
+            <li>
+              <div>
+                <span class="item-name">Cappuccino<span class="badge">Hafer 0 €</span></span>
+                <p class="item-desc">Hafer- und Sojamilch ohne Aufpreis. Aylin zieht ihn so, dass er
+                  auch zum Mitnehmen noch Schaum hat.</p>
+              </div>
+              <span class="item-price">3,20 €</span>
+            </li>
+            <li>
+              <div>
+                <span class="item-name">Kuchen des Tages <em>(Stück)</em></span>
+                <p class="item-desc">Was gerade reif ist — steht morgens auf der Tafel neben der
+                  Kasse.</p>
+              </div>
+              <span class="item-price">3,50 €</span>
+            </li>
           </ul>
         </div>
       </div>
