@@ -18,6 +18,7 @@
     --accent-soft: #D9805A;
     --line: rgba(0, 0, 0, 0.08);
     --focus: #0071E3;
+    --open: #1D8A4E;
     --radius-card: 22px;
     --radius-pill: 980px;
   }
@@ -33,6 +34,7 @@
       --accent-soft: #C56B45;
       --line: rgba(255, 255, 255, 0.12);
       --focus: #2997FF;
+      --open: #4CD07D;
     }
   }
 
@@ -46,6 +48,7 @@
     --accent-soft: #C56B45;
     --line: rgba(255, 255, 255, 0.12);
     --focus: #2997FF;
+    --open: #4CD07D;
   }
 
   * { box-sizing: border-box; }
@@ -160,7 +163,7 @@
 
   /* Hero */
   .hero {
-    padding: 4.5rem 0 2.5rem;
+    padding: 4.5rem 0 3rem;
     text-align: center;
     display: grid;
     justify-items: center;
@@ -199,133 +202,79 @@
     margin-top: 0.5rem;
   }
 
-  /* Product stage (3D roll) */
-  .roll-stage-wrap {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 1rem auto 0;
+  /* Ofenstatus */
+  .oven-card {
+    margin-top: 1.6rem;
+    width: 100%;
+    max-width: 27rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .oven-status {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    font-size: 1.02rem;
   }
-  .roll-glow {
-    position: absolute;
-    inset: -20%;
-    background: radial-gradient(closest-side, var(--accent) 0%, transparent 72%);
-    opacity: 0.16;
-    filter: blur(18px);
-    pointer-events: none;
+  .oven-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--muted);
+    flex-shrink: 0;
   }
-  .roll-scene {
-    width: 190px;
-    height: 190px;
-    -webkit-perspective: 800px;
-    perspective: 800px;
-    transform: scale(1.55);
+  .oven-card[data-open="true"] .oven-dot {
+    background: var(--open);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--open) 55%, transparent);
+    animation: pulse 2.4s ease-out infinite;
   }
-  .roll-body {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-animation: roll-spin 16s linear infinite;
-    animation: roll-spin 16s linear infinite;
-  }
-  @-webkit-keyframes roll-spin {
-    from { -webkit-transform: rotateX(55deg) rotateY(0deg); }
-    to { -webkit-transform: rotateX(55deg) rotateY(360deg); }
-  }
-  @keyframes roll-spin {
-    from { transform: rotateX(55deg) rotateY(0deg); }
-    to { transform: rotateX(55deg) rotateY(360deg); }
+  @keyframes pulse {
+    70% { box-shadow: 0 0 0 9px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .roll-body {
-      -webkit-animation: none;
-      animation: none;
-      -webkit-transform: rotateX(55deg);
-      transform: rotateX(55deg);
-    }
+    .oven-card[data-open="true"] .oven-dot { animation: none; }
   }
-
-  .roll-layers span {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 190px;
-    height: 190px;
-    border-radius: 50%;
-    background: color-mix(in srgb, #C98A4A calc((1 - var(--t)) * 100%), #9C6530);
-  }
-  .roll-layers span:nth-child(1) { --t: 0; -webkit-transform: rotateX(90deg) translateZ(0px); transform: rotateX(90deg) translateZ(0px); }
-  .roll-layers span:nth-child(2) { --t: 0.083; -webkit-transform: rotateX(90deg) translateZ(-3.4px); transform: rotateX(90deg) translateZ(-3.4px); }
-  .roll-layers span:nth-child(3) { --t: 0.167; -webkit-transform: rotateX(90deg) translateZ(-6.8px); transform: rotateX(90deg) translateZ(-6.8px); }
-  .roll-layers span:nth-child(4) { --t: 0.25; -webkit-transform: rotateX(90deg) translateZ(-10.2px); transform: rotateX(90deg) translateZ(-10.2px); }
-  .roll-layers span:nth-child(5) { --t: 0.333; -webkit-transform: rotateX(90deg) translateZ(-13.6px); transform: rotateX(90deg) translateZ(-13.6px); }
-  .roll-layers span:nth-child(6) { --t: 0.417; -webkit-transform: rotateX(90deg) translateZ(-17px); transform: rotateX(90deg) translateZ(-17px); }
-  .roll-layers span:nth-child(7) { --t: 0.5; -webkit-transform: rotateX(90deg) translateZ(-20.4px); transform: rotateX(90deg) translateZ(-20.4px); }
-  .roll-layers span:nth-child(8) { --t: 0.583; -webkit-transform: rotateX(90deg) translateZ(-23.8px); transform: rotateX(90deg) translateZ(-23.8px); }
-  .roll-layers span:nth-child(9) { --t: 0.667; -webkit-transform: rotateX(90deg) translateZ(-27.2px); transform: rotateX(90deg) translateZ(-27.2px); }
-  .roll-layers span:nth-child(10) { --t: 0.75; -webkit-transform: rotateX(90deg) translateZ(-30.6px); transform: rotateX(90deg) translateZ(-30.6px); }
-  .roll-layers span:nth-child(11) { --t: 0.833; -webkit-transform: rotateX(90deg) translateZ(-34px); transform: rotateX(90deg) translateZ(-34px); }
-  .roll-layers span:nth-child(12) { --t: 0.917; -webkit-transform: rotateX(90deg) translateZ(-37.4px); transform: rotateX(90deg) translateZ(-37.4px); }
-  .roll-layers span:nth-child(13) { --t: 1; -webkit-transform: rotateX(90deg) translateZ(-40.8px); transform: rotateX(90deg) translateZ(-40.8px); }
-
-  .roll-top {
-    position: absolute;
-    width: 190px;
-    height: 190px;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    -webkit-transform: rotateX(90deg) translateZ(-44.2px);
-    transform: rotateX(90deg) translateZ(-44.2px);
-    background: repeating-radial-gradient(circle at 50% 50%, #C97A44 0 9px, #E8B879 9px 18px);
-    box-shadow: inset 0 0 0 6px #D99A55, 0 2px 14px rgba(0, 0, 0, 0.28);
-  }
-
-  .roll-icing {
-    position: absolute;
-    width: 190px;
-    height: 190px;
-    left: 0;
-    top: 0;
-    -webkit-transform: rotateX(90deg) translateZ(-45.2px);
-    transform: rotateX(90deg) translateZ(-45.2px);
-  }
-  .roll-icing span {
-    position: absolute;
-    height: 8px;
-    border-radius: 6px;
-    background: linear-gradient(90deg, rgba(255, 251, 242, 0.95), rgba(255, 251, 242, 0.55));
-  }
-  .roll-icing span:nth-child(1) { top: 55px; left: 30px; width: 130px; transform: rotate(9deg); }
-  .roll-icing span:nth-child(2) { top: 90px; left: 20px; width: 155px; transform: rotate(-6deg); }
-  .roll-icing span:nth-child(3) { top: 122px; left: 35px; width: 120px; transform: rotate(11deg); }
-
-  .roll-shadow {
-    width: 130px;
-    height: 22px;
-    margin: 0.7rem auto 0;
-    border-radius: 50%;
-    background: radial-gradient(closest-side, color-mix(in srgb, var(--ink) 25%, transparent), transparent);
-  }
-
-  .feature-caption {
-    text-align: center;
+  .oven-now {
+    margin: 0;
     color: var(--muted);
     font-size: 0.95rem;
-    max-width: 16rem;
-    margin: 0.75rem auto 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--line);
   }
-  .feature-caption strong {
-    display: block;
+  .oven-now strong {
     color: var(--ink);
-    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  /* Zahlen */
+  .facts-band {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 2.25rem 0;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .fact strong {
+    display: block;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 600;
-    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .fact span {
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 
   /* Sections */
@@ -356,6 +305,125 @@
     max-width: 56rem;
     margin: 0 auto;
   }
+
+  /* Geschichte */
+  .story {
+    align-items: start;
+    gap: 2.5rem;
+  }
+  .story h2 { font-size: clamp(1.8rem, 3.2vw, 2.35rem); margin-bottom: 1rem; }
+  .story p { margin: 0 0 1rem; color: var(--muted); }
+  .story p:last-child { margin-bottom: 0; }
+  .story .signature {
+    margin-top: 1.4rem;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .story .signature span { display: block; color: var(--muted); font-weight: 400; font-size: 0.85rem; }
+
+  .steckbrief { background: var(--bg); border: 1px solid var(--line); }
+  .section-alt .steckbrief { background: var(--bg); }
+  .steckbrief h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+  .steckbrief > p { margin: 0 0 1.1rem; color: var(--muted); font-size: 0.9rem; }
+  .steckbrief dl { margin: 0; display: grid; gap: 0; }
+  .steckbrief div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+  .steckbrief div:last-child { border-bottom: none; }
+  .steckbrief dt { color: var(--muted); }
+  .steckbrief dd { margin: 0; text-align: right; font-weight: 500; }
+
+  /* Karten */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 62rem;
+    margin: 0 auto;
+  }
+  .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.97rem; }
+  .card-icon { margin-bottom: 1rem; display: block; }
+
+  /* Backstuben-Zeitleiste */
+  .timeline {
+    max-width: 44rem;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+  }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1.25rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .timeline time {
+    color: var(--accent);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline strong { display: block; font-weight: 600; }
+  .timeline p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.95rem; }
+
+  /* Beliebte Backwaren */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 62rem;
+    margin: 0 auto 2rem;
+  }
+  .product { display: grid; gap: 0.4rem; }
+  .product-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .product h3 { font-size: 1.08rem; }
+  .product .price {
+    color: var(--accent);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .product p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+  /* Team */
+  .team {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    max-width: 66rem;
+    margin: 0 auto;
+  }
+  .member { text-align: center; }
+  .avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.9rem;
+    letter-spacing: 0;
+  }
+  .member h3 { font-size: 1.02rem; }
+  .member .role { color: var(--accent); font-size: 0.85rem; font-weight: 500; }
+  .member p { margin: 0.5rem 0 0; color: var(--muted); font-size: 0.92rem; }
 
   table.hours {
     width: 100%;
@@ -420,10 +488,18 @@
   footer a { text-decoration: underline; text-underline-offset: 3px; }
   footer a:hover { color: var(--ink); }
 
+  @media (max-width: 860px) {
+    .cards, .products { grid-template-columns: 1fr; }
+    .team { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+  }
+
   @media (max-width: 720px) {
     .nav-links { gap: 1.1rem; flex-wrap: wrap; width: 100%; }
     .band { grid-template-columns: 1fr; gap: 1.25rem; }
-    .hero { padding: 3rem 0 2rem; }
+    .story { gap: 1.75rem; }
+    .facts { grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; }
+    .timeline li { grid-template-columns: 4.5rem 1fr; gap: 0.9rem; }
+    .hero { padding: 3rem 0 2.25rem; }
     section { padding: 3rem 0; }
   }
 </style>
@@ -457,33 +533,190 @@
       <a class="btn btn-ghost" href="#anfahrt">Anfahrt</a>
     </div>
 
-    <div class="roll-stage-wrap" aria-hidden="true">
-      <div class="roll-glow"></div>
-      <div class="roll-scene">
-        <div class="roll-body">
-          <div class="roll-layers">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span>
-          </div>
-          <div class="roll-top"></div>
-          <div class="roll-icing">
-            <span></span><span></span><span></span>
-          </div>
+    <div class="oven-card" id="oven-card">
+      <p class="oven-status">
+        <span class="oven-dot" aria-hidden="true"></span>
+        <span id="oven-status-text">Mo–Fr ab 07:00 · Sa ab 08:00 · So ab 09:00</span>
+      </p>
+      <p class="oven-now" id="oven-now-text">
+        <strong>Aus dem Ofen:</strong> Brötchen und Laugengebäck ab 06:30, Sauerteigbrote ab 09:00,
+        Zimtschnecken ab Mittag.
+      </p>
+    </div>
+  </div>
+
+  <div class="facts-band">
+    <div class="wrap facts">
+      <div class="fact">
+        <strong>2000</strong>
+        <span>eröffnet am Bahnhofsplatz</span>
+      </div>
+      <div class="fact">
+        <strong>03:45</strong>
+        <span>geht der Steinofen an</span>
+      </div>
+      <div class="fact">
+        <strong>18 Std</strong>
+        <span>kalte Teigruhe pro Brot</span>
+      </div>
+      <div class="fact">
+        <strong>3 Min</strong>
+        <span>zu Fuß bis Gleis 1</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="ueber-uns">
+    <div class="wrap band story">
+      <div>
+        <h2>Seit 2000 am Bahnhofsplatz.</h2>
+        <p>Angefangen hat alles mit Marga Brandt, einem gebrauchten Steinofen und der Idee, dass
+          Reisende zwischen zwei Zügen mehr verdient haben als abgepacktes Aufbackgebäck. Der Laden
+          war vier Meter breit und hatte zwei Stehtische.</p>
+        <p>2014 hat ihr Sohn Jonas die Backstube übernommen — Bäckermeister, ausgebildet in Kassel,
+          zurückgekommen mit einem Glas Anstellgut im Rucksack. Aus diesem Glas ist unser Sauerteig
+          „Berta“ geworden, der bis heute jedes Roggenbrot im Haus treibt.</p>
+        <p>Geblieben ist der Ofen. Geblieben ist auch, dass wir nichts vorbacken, nichts einfrieren
+          und abends lieber leere Regale haben als Ware vom Vortag.</p>
+        <p class="signature">Jonas Brandt<span>Inhaber &amp; Bäckermeister</span></p>
+      </div>
+      <div class="panel steckbrief">
+        <h3>Steckbrief: Sauerteig „Berta“</h3>
+        <p>Unser ältestes Familienmitglied lebt im Kühlschrank neben der Knetmaschine.</p>
+        <dl>
+          <div><dt>Angesetzt</dt><dd>Frühjahr 2014</dd></div>
+          <div><dt>Gefüttert</dt><dd>täglich um 05:00</dd></div>
+          <div><dt>Mehl</dt><dd>Roggen Type 1150</dd></div>
+          <div><dt>Charakter</dt><dd>mild-säuerlich</dd></div>
+          <div><dt>Im Einsatz für</dt><dd>4 von 6 Broten</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Was bei uns anders läuft</h2>
+        <p>Drei Entscheidungen, die man in jedem Brot schmeckt — und die uns jeden Morgen
+          zwei Stunden früher aus dem Bett holen.</p>
+      </div>
+      <div class="cards">
+        <div class="panel card">
+          <svg class="card-icon" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="4" y="8" width="24" height="18" rx="4" stroke="var(--accent)" stroke-width="1.8"/>
+            <path d="M4 14h24" stroke="var(--accent)" stroke-width="1.8"/>
+            <circle cx="16" cy="20" r="3.5" stroke="var(--accent)" stroke-width="1.8"/>
+            <path d="M11 4c0 2 2 2 2 4M19 4c0 2 2 2 2 4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Steinofen „Alfred“, Baujahr 1998</h3>
+          <p>3,2 Tonnen Schamotte, die nachts auf 280 °C hochgezogen werden und die Hitze dann über
+            Stunden abgeben. Das gibt die Kruste, die ein Umluftofen nicht hinbekommt.</p>
+        </div>
+        <div class="panel card">
+          <svg class="card-icon" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 5v22" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M16 13c-4 0-7-2.5-7-6 3.5 0 7 1.5 7 6ZM16 13c4 0 7-2.5 7-6-3.5 0-7 1.5-7 6ZM16 22c-4 0-7-2.5-7-6 3.5 0 7 1.5 7 6ZM16 22c4 0 7-2.5 7-6-3.5 0-7 1.5-7 6Z" stroke="var(--accent)" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+          <h3>Mehl aus der Rosdorfer Mühle</h3>
+          <p>Acht Kilometer Lieferweg, Bio-Weizen und -Roggen von Höfen aus dem Leinetal. Wir kennen
+            die Charge, die Ernte und den Müller beim Vornamen.</p>
+        </div>
+        <div class="panel card">
+          <svg class="card-icon" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="11" stroke="var(--accent)" stroke-width="1.8"/>
+            <path d="M16 9.5V16l4.5 2.8" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>18 Stunden Zeit statt Backmittel</h3>
+          <p>Unsere Teige ruhen über Nacht kühl und langsam. Das macht sie bekömmlicher, aromatischer
+            und ersetzt jedes Pulver, das Brot schneller aussehen lässt, als es ist.</p>
         </div>
       </div>
     </div>
-    <div class="roll-shadow" aria-hidden="true"></div>
-    <p class="feature-caption"><strong>Zimtschnecke des Tages</strong>Handgerollt mit Zimt-Zuckerkaramell, direkt aus dem Ofen.</p>
-  </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Ein Tag in der Backstube</h2>
+        <p>Wenn der erste Regionalexpress einfährt, sind wir schon vier Stunden wach.</p>
+      </div>
+      <ul class="timeline">
+        <li>
+          <time datetime="03:45">03:45</time>
+          <div>
+            <strong>Ofen an</strong>
+            <p>Piet fährt Alfred hoch und holt die Brotteige aus der Kühlung, die seit gestern
+              Nachmittag ruhen.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="06:30">06:30</time>
+          <div>
+            <strong>Erste Bleche</strong>
+            <p>Brötchen, Croissants und Laugengebäck kommen raus. Zwanzig Minuten später steht die
+              erste Pendlerin an der Tür.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="09:00">09:00</time>
+          <div>
+            <strong>Die Brote kommen</strong>
+            <p>Roggensauerteig und Dinkelvollkorn verlassen den Ofen — ab jetzt riecht der ganze
+              Bahnhofsplatz danach.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="12:30">12:30</time>
+          <div>
+            <strong>Zimtschnecken &amp; Kuchen</strong>
+            <p>Marlene zieht die zweite Runde Süßes aus dem Ofen, passend zur Mittagspause der
+              Büros in der Weender Straße.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="17:30">17:30</time>
+          <div>
+            <strong>Feierabendbrot</strong>
+            <p>Was jetzt noch da ist, geht zum halben Preis raus. Um 18:00 sind die Regale leer —
+              so soll es sein.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
 
   <section class="section-alt" id="speisekarte">
     <div class="wrap">
       <div class="section-head">
-        <h2>Speisekarte</h2>
-        <p>Sauerteigbrote, Laugengebäck, hausgemachte Zimtschnecken und Kaffee von Elbgold — alles
-          frisch aus dem Steinofen, mit Preisen zum Nachschauen.</p>
+        <h2>Beliebt bei euch</h2>
+        <p>Drei Klassiker, die wir jeden Tag backen — den Rest gibt es auf der Speisekarte.</p>
+      </div>
+      <div class="products">
+        <div class="panel product">
+          <div class="product-head">
+            <h3>Roggensauerteig</h3>
+            <span class="price">4,80 €</span>
+          </div>
+          <p>Ganzer Laib, 1,2 kg, mit „Berta“ getrieben. Hält eine Woche im Leinentuch und wird
+            dabei nur besser.</p>
+        </div>
+        <div class="panel product">
+          <div class="product-head">
+            <h3>Zimtschnecke</h3>
+            <span class="price">2,90 €</span>
+          </div>
+          <p>Handgerollt mit Zimt-Zuckerkaramell. Freitags backen wir die doppelte Menge und sind
+            trotzdem mittags durch.</p>
+        </div>
+        <div class="panel product">
+          <div class="product-head">
+            <h3>Laugenbrezel</h3>
+            <span class="price">1,80 €</span>
+          </div>
+          <p>Über Nacht geführt, morgens von Hand geschlungen, mit grobem Meersalz. Das meistverkaufte
+            Stück im Haus.</p>
+        </div>
       </div>
       <div style="text-align:center;">
         <a class="link-more" href="speisekarte.html">Ganze Speisekarte ansehen →</a>
@@ -492,6 +725,44 @@
   </section>
 
   <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Wer morgens um vier das Licht anmacht</h2>
+        <p>Sieben Leute, eine Backstube, ein Tresen. Die vier hier trefft ihr am häufigsten.</p>
+      </div>
+      <div class="team">
+        <div class="member">
+          <div class="avatar" aria-hidden="true">JB</div>
+          <h3>Jonas Brandt</h3>
+          <p class="role">Inhaber &amp; Bäckermeister</p>
+          <p>Übernahm 2014 von seiner Mutter. Verantwortlich für Berta, Alfred und alle Rezepte.</p>
+        </div>
+        <div class="member">
+          <div class="avatar" aria-hidden="true">MK</div>
+          <h3>Marlene Kittel</h3>
+          <p class="role">Konditorei</p>
+          <p>Erfindet den Kuchen des Tages, meistens abhängig davon, was gerade auf dem Wochenmarkt
+            reif ist.</p>
+        </div>
+        <div class="member">
+          <div class="avatar" aria-hidden="true">AY</div>
+          <h3>Aylin Yücel</h3>
+          <p class="role">Tresen &amp; Kaffee</p>
+          <p>Kennt die Bestellung der Stammgäste, bevor sie die Tür ganz aufhaben. Zieht den besten
+            Cappuccino am Platz.</p>
+        </div>
+        <div class="member">
+          <div class="avatar" aria-hidden="true">PO</div>
+          <h3>Piet Ostermann</h3>
+          <p class="role">Nachtschicht &amp; Teigführung</p>
+          <p>Beginnt, wenn alle anderen aufhören. Wacht über die 18 Stunden, die jedem Teig
+            zustehen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
     <div class="wrap">
       <div class="section-head">
         <h2>Reserviere deinen Tisch</h2>
@@ -504,7 +775,7 @@
     </div>
   </section>
 
-  <section class="section-alt" id="anfahrt">
+  <section id="anfahrt">
     <div class="wrap band">
       <div class="panel">
         <h3>Öffnungszeiten</h3>
@@ -540,3 +811,63 @@
     <a href="datenschutz.html">Datenschutz</a>
   </span>
 </footer>
+
+<script>
+  // Öffnungszeiten wie auf oeffnungszeiten.html: [Öffnung, Schließung] in Minuten seit 00:00
+  (function () {
+    var SCHEDULE = {
+      0: [9 * 60, 13 * 60],   // Sonntag
+      1: [7 * 60, 18 * 60],
+      2: [7 * 60, 18 * 60],
+      3: [7 * 60, 18 * 60],
+      4: [7 * 60, 18 * 60],
+      5: [7 * 60, 19 * 60],   // Freitag
+      6: [8 * 60, 15 * 60]    // Samstag
+    };
+
+    function clock(minutes) {
+      var h = Math.floor(minutes / 60);
+      var m = minutes % 60;
+      return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m;
+    }
+
+    function ovenLine(minutes, isOpen) {
+      if (!isOpen) return "Der Ofen ruht. Alfred heizt um 03:45 wieder auf.";
+      if (minutes < 9 * 60) return "Brötchen, Croissants und Laugengebäck.";
+      if (minutes < 12 * 60) return "Roggensauerteig und Dinkelvollkorn.";
+      if (minutes < 15 * 60) return "Zimtschnecken und der Kuchen des Tages.";
+      return "Feierabendbrote für den Heimweg.";
+    }
+
+    var card = document.getElementById("oven-card");
+    var statusText = document.getElementById("oven-status-text");
+    var nowText = document.getElementById("oven-now-text");
+    if (!card || !statusText || !nowText) return;
+
+    function render() {
+      var now = new Date();
+      var day = now.getDay();
+      var minutes = now.getHours() * 60 + now.getMinutes();
+      var today = SCHEDULE[day];
+      var isOpen = minutes >= today[0] && minutes < today[1];
+      var status;
+
+      if (isOpen) {
+        status = "Jetzt geöffnet · noch bis " + clock(today[1]);
+      } else if (minutes < today[0]) {
+        status = "Gerade geschlossen · öffnet heute um " + clock(today[0]);
+      } else {
+        var next = (day + 1) % 7;
+        status = "Gerade geschlossen · öffnet morgen um " + clock(SCHEDULE[next][0]);
+      }
+
+      card.setAttribute("data-open", isOpen ? "true" : "false");
+      statusText.textContent = status;
+      nowText.innerHTML = "<strong>" + (isOpen ? "Gerade im Ofen:" : "Aus dem Ofen:") + "</strong> " +
+        ovenLine(minutes, isOpen);
+    }
+
+    render();
+    setInterval(render, 60000);
+  })();
+</script>
