@@ -18,6 +18,16 @@
 <meta name="twitter:title" content="Reservierung — Bäckerei 2000">
 <meta name="twitter:description" content="Tisch reservieren bei der Bäckerei 2000 am Bahnhofsplatz Göttingen — kurz Bescheid geben, wir halten den Platz frei.">
 <meta name="twitter:image" content="https://cs67pzk79g-sys.github.io/1.0/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://cs67pzk79g-sys.github.io/1.0/index.html"},
+    {"@type": "ListItem", "position": 2, "name": "Reservierung", "item": "https://cs67pzk79g-sys.github.io/1.0/reservierung.html"}
+  ]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Reservierung — Bäckerei 2000</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -288,6 +298,13 @@
   .agb-body h3 { font-size: 1rem; margin: 1.3rem 0 0.4rem; }
   .agb-body h3:first-of-type { margin-top: 0; }
   .agb-body p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .breadcrumbs { padding: 1.25rem 0 0; }
+  .breadcrumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; font-size: 0.85rem; color: var(--muted); }
+  .breadcrumbs li { display: flex; align-items: center; }
+  .breadcrumbs li + li::before { content: "/"; margin: 0 0.5rem; color: var(--muted); }
+  .breadcrumbs a { color: var(--muted); text-decoration: none; }
+  .breadcrumbs a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .breadcrumbs li[aria-current="page"] { color: var(--ink); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -311,6 +328,12 @@
 </header>
 
 <main>
+  <nav class="wrap breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="index.html">Startseite</a></li>
+      <li aria-current="page">Reservierung</li>
+    </ol>
+  </nav>
   <div class="wrap page-head">
     <p class="eyebrow">Reservierung</p>
     <h1>Reserviere deinen Tisch.</h1>
