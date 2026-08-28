@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Impressum der Bäckerei 2000, Bahnhofsplatz 1, 37073 Göttingen — Angaben gemäß § 5 TMG.">
+<meta name="description" content="Diese Seite gibt es bei der Bäckerei 2000 nicht — zurück zur Startseite, Speisekarte oder Reservierung.">
+<meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<title>Impressum — Bäckerei 2000</title>
+<title>Seite nicht gefunden — Bäckerei 2000</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -64,7 +65,7 @@
   }
 
   .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.75rem; }
-  h1, h2 { font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
+  h1 { font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
   a { color: inherit; }
   a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
@@ -82,21 +83,41 @@
   .nav-links a { text-decoration: none; color: var(--muted); transition: color 0.15s ease; }
   .nav-links a:hover { color: var(--ink); }
 
-  .page-head { padding: 4rem 0 2.5rem; max-width: 40rem; margin: 0 auto; text-align: center; display: grid; gap: 0.8rem; }
-  .eyebrow { color: var(--accent); font-weight: 600; font-size: 0.95rem; }
-  .page-head h1 { font-size: clamp(2.2rem, 5vw, 3.25rem); line-height: 1.08; }
-  .page-head p { color: var(--muted); font-size: 1.1rem; margin: 0; }
+  .not-found {
+    padding: 6rem 0 7rem;
+    max-width: 34rem;
+    margin: 0 auto;
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 1.1rem;
+  }
+  .not-found .eyebrow { color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+  .not-found h1 { font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.1; }
+  .not-found p { color: var(--muted); margin: 0; }
 
-  section { padding-bottom: 4.5rem; }
-
-  .legal { max-width: 34rem; margin: 0 auto; display: grid; gap: 2rem; }
-  .legal-group h2 { font-size: 1.05rem; margin-bottom: 0.6rem; }
-  .legal-group p { margin: 0; color: var(--muted); }
-  .legal-group p + p { margin-top: 0.3rem; }
-  .legal-group a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-
-  .back-link { display: inline-block; margin-top: 0.5rem; font-size: 0.95rem; text-decoration: none; color: var(--accent); }
-  .back-link:hover { color: var(--accent-soft); }
+  .cta-row {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: var(--radius-pill);
+    padding: 0.8rem 1.65rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-soft); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { background: var(--panel); }
 
   footer {
     border-top: 1px solid var(--line);
@@ -113,8 +134,7 @@
 
   @media (max-width: 720px) {
     .nav-links { gap: 1.1rem; flex-wrap: wrap; width: 100%; }
-    .page-head { padding: 2.75rem 0 2rem; }
-    section { padding-bottom: 3rem; }
+    .not-found { padding: 4rem 0 5rem; }
   }
 
   .footer-link {
@@ -185,54 +205,16 @@
 </header>
 
 <main>
-  <div class="wrap page-head">
-    <p class="eyebrow">Impressum</p>
-    <h1>Angaben gemäß § 5 TMG.</h1>
-    <p>Wer hinter der Bäckerei 2000 steht, wie ihr uns erreicht und was im Streitfall gilt —
-      alles auf einen Blick.</p>
-  </div>
-
-  <section>
-    <div class="wrap legal">
-      <div class="legal-group">
-        <h2>Anbieter</h2>
-        <p>Bäckerei 2000<br>Inh. Jonas Brandt</p>
-        <p>Bahnhofsplatz 1<br>37073 Göttingen</p>
-      </div>
-
-      <div class="legal-group">
-        <h2>Kontakt</h2>
-        <p>Telefon: <a href="tel:+495511234567">0551 12 34 567</a><br>
-          E-Mail: <a href="mailto:hallo@baeckerei2000-goettingen.de">hallo@baeckerei2000-goettingen.de</a></p>
-      </div>
-
-      <div class="legal-group">
-        <h2>Umsatzsteuer-ID</h2>
-        <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br>DE 123456789</p>
-      </div>
-
-      <div class="legal-group">
-        <h2>Berufsbezeichnung</h2>
-        <p>Bäckermeister (verliehen in Deutschland)<br>
-          Zuständige Kammer: Handwerkskammer Hildesheim-Südniedersachsen</p>
-      </div>
-
-      <div class="legal-group">
-        <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-        <p>Jonas Brandt<br>Bahnhofsplatz 1<br>37073 Göttingen</p>
-      </div>
-
-      <div class="legal-group">
-        <h2>Streitschlichtung</h2>
-        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-          <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
-        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
-          Verbraucherschlichtungsstelle teilzunehmen.</p>
-      </div>
-
-      <a class="back-link" href="index.html">← Zurück zur Startseite</a>
+  <div class="wrap not-found">
+    <p class="eyebrow">Fehler 404</p>
+    <h1>Diese Seite ist wohl schon verkauft.</h1>
+    <p>Die Adresse gibt es bei uns nicht — vielleicht ein Tippfehler, oder die Seite wurde
+      verschoben. Schau doch auf der Startseite vorbei oder wirf einen Blick auf die Speisekarte.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="index.html">Zur Startseite</a>
+      <a class="btn btn-ghost" href="speisekarte.html">Speisekarte ansehen</a>
     </div>
-  </section>
+  </div>
 </main>
 
 <footer class="wrap">

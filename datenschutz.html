@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+<html lang="de">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Datenschutzerklärung der Bäckerei 2000 Göttingen: Informationen zu Hosting, Google Fonts und dem Reservierungsformular.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Datenschutzerklärung — Bäckerei 2000</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,6 +85,7 @@
   .page-head { padding: 4rem 0 2.5rem; max-width: 40rem; margin: 0 auto; text-align: center; display: grid; gap: 0.8rem; }
   .eyebrow { color: var(--accent); font-weight: 600; font-size: 0.95rem; }
   .page-head h1 { font-size: clamp(2.2rem, 5vw, 3.25rem); line-height: 1.08; }
+  .page-head p { color: var(--muted); font-size: 1.1rem; margin: 0; }
 
   section { padding-bottom: 4.5rem; }
 
@@ -112,13 +116,61 @@
     .page-head { padding: 2.75rem 0 2rem; }
     section { padding-bottom: 3rem; }
   }
+
+  .footer-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .footer-link:hover { color: var(--ink); }
+  button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  dialog.agb-dialog {
+    max-width: 34rem;
+    width: calc(100% - 2.5rem);
+    border: none;
+    border-radius: var(--radius-card);
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  dialog.agb-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+  .agb-close { display: flex; justify-content: flex-end; padding: 0.75rem 0.75rem 0; }
+  .agb-close button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: none;
+    background: var(--panel);
+    color: var(--ink);
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .agb-close button:hover { background: var(--line); }
+  .agb-body { padding: 0 clamp(1.25rem, 4vw, 2.25rem) 2rem; max-height: 70vh; overflow-y: auto; }
+  .agb-body h2 { font-size: 1.3rem; margin: 0 0 1.2rem; }
+  .agb-body h3 { font-size: 1rem; margin: 1.3rem 0 0.4rem; }
+  .agb-body h3:first-of-type { margin-top: 0; }
+  .agb-body p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 </style>
+</head>
+<body>
 
 <header>
   <nav class="wrap nav">
     <a class="logo" href="index.html">
       <svg class="logo-mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M4 22C4 12 9 7 16 7C23 7 28 12 28 22C28 26.4183 22.6274 28 16 28C9.37258 28 4 26.4183 4 22Z" fill="var(--accent)"/>
+        <path d="M5 22C5 13 9.5 7 16 7C22.5 7 27 13 27 22C27 25.3 22 27 16 27C10 27 5 25.3 5 22Z" fill="var(--accent)"/>
         <path d="M10.5 12.5L14 19M16 11V18.5M21.5 12.5L18 19" stroke="var(--bg)" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
       Bäckerei 2000
@@ -136,6 +188,8 @@
   <div class="wrap page-head">
     <p class="eyebrow">Datenschutz</p>
     <h1>Datenschutzerklärung.</h1>
+    <p>Diese Website kommt bewusst mit wenig Datenverarbeitung aus — was trotzdem anfällt und
+      welche Rechte Sie dabei haben, steht hier.</p>
   </div>
 
   <section>
@@ -185,12 +239,14 @@
 
       <div class="legal-group">
         <h2>6. Ihre Rechte</h2>
-        <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
-          personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung
-          und ggf. ein Recht auf Berichtigung, Einschränkung oder Löschung dieser Daten. Hierzu sowie
-          zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit über die oben
-          genannte Adresse an uns wenden.</p>
-        <p>Ihnen steht außerdem ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu, etwa der
+        <p>Ihnen stehen bezüglich Ihrer personenbezogenen Daten folgende Rechte zu: Auskunft über die
+          gespeicherten Daten, deren Herkunft und Empfänger sowie den Zweck der Verarbeitung (Art. 15
+          DSGVO); Berichtigung unrichtiger Daten (Art. 16 DSGVO); Löschung (Art. 17 DSGVO) und
+          Einschränkung der Verarbeitung (Art. 18 DSGVO); Datenübertragbarkeit (Art. 20 DSGVO); sowie
+          Widerspruch gegen die Verarbeitung (Art. 21 DSGVO). Hierzu sowie zu weiteren Fragen zum Thema
+          personenbezogene Daten können Sie sich jederzeit über die oben genannte Adresse an uns
+          wenden.</p>
+        <p>Ihnen steht außerdem ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu, etwa der
           Landesbeauftragten für den Datenschutz Niedersachsen.</p>
       </div>
 
@@ -199,6 +255,13 @@
         <p>Diese Website nutzt aus Sicherheitsgründen eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte
           Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://"
           wechselt.</p>
+      </div>
+
+      <div class="legal-group">
+        <h2>8. Aktualität dieser Erklärung</h2>
+        <p>Diese Datenschutzerklärung entspricht dem aktuellen Stand dieser Website. Ändert sich der
+          Funktionsumfang der Seite — etwa durch neue eingebundene Dienste — passen wir diese Seite
+          entsprechend an.</p>
       </div>
 
       <a class="back-link" href="index.html">← Zurück zur Startseite</a>
@@ -210,6 +273,57 @@
   <span>© 2026 Bäckerei 2000, Bahnhofsplatz 1, Göttingen</span>
   <span>
     <a href="impressum.html">Impressum</a> ·
-    <a href="datenschutz.html">Datenschutz</a>
+    <a href="datenschutz.html">Datenschutz</a> ·
+    <button type="button" class="footer-link" onclick="document.getElementById('agb-dialog').showModal()">AGB</button>
   </span>
 </footer>
+
+<dialog id="agb-dialog" class="agb-dialog" aria-labelledby="agb-title">
+  <div class="agb-close">
+    <form method="dialog"><button type="submit" aria-label="Schließen">✕</button></form>
+  </div>
+  <div class="agb-body">
+    <h2 id="agb-title">Allgemeine Geschäftsbedingungen</h2>
+
+    <h3>§ 1 Geltungsbereich</h3>
+    <p>Diese Allgemeinen Geschäftsbedingungen gelten für alle Leistungen der Bäckerei 2000,
+      Inh. Jonas Brandt, Bahnhofsplatz 1, 37073 Göttingen („wir“), gegenüber Gästen und Kundinnen
+      und Kunden — insbesondere für den Verkauf von Backwaren vor Ort sowie für Tischreservierungen
+      über das Reservierungsformular dieser Website.</p>
+
+    <h3>§ 2 Tischreservierungen</h3>
+    <p>Reservierungsanfragen über das Formular auf dieser Website sind unverbindliche Anfragen.
+      Ein Reservierungsvertrag kommt erst durch unsere Bestätigung per E-Mail oder Telefon zustande.
+      Reservierte Tische halten wir in der Regel 15 Minuten über die vereinbarte Uhrzeit hinaus frei;
+      bei absehbarer Verspätung bitten wir um kurze Rückmeldung unter 0551 12 34 567. Eine Stornierung
+      ist bis eine Stunde vor dem reservierten Termin formlos möglich, telefonisch oder per E-Mail.</p>
+
+    <h3>§ 3 Waren, Preise und Zahlung</h3>
+    <p>Verkauft werden unsere Backwaren und Getränke ausschließlich vor Ort in der Filiale am
+      Bahnhofsplatz. Es gilt der am Verkaufstag ausgezeichnete Preis inklusive der gesetzlichen
+      Umsatzsteuer. Ein Online-Verkauf oder Versand findet nicht statt. Die Zahlung erfolgt bar oder
+      mit den an der Kasse angezeigten kartengestützten Zahlungsarten.</p>
+
+    <h3>§ 4 Allergene und Zutaten</h3>
+    <p>Informationen zu Allergenen und Zutaten unserer Backwaren liegen am Tresen aus und werden auf
+      Nachfrage gerne erläutert. Da in unserer Backstube mit Weizen, Ei, Milch, Nüssen und weiteren
+      Allergenen gearbeitet wird, können Spuren dieser Stoffe auch in Produkten enthalten sein, die sie
+      nicht als Zutat ausweisen.</p>
+
+    <h3>§ 5 Haftung</h3>
+    <p>Wir haften unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der
+      Gesundheit sowie bei Vorsatz und grober Fahrlässigkeit. Für leicht fahrlässig verursachte
+      Schäden haften wir nur bei Verletzung einer wesentlichen Vertragspflicht und begrenzt auf den
+      vertragstypischen, vorhersehbaren Schaden. Im Übrigen ist die Haftung ausgeschlossen.</p>
+
+    <h3>§ 6 Schlussbestimmungen</h3>
+    <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. Sollte eine
+      Bestimmung dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.
+      Diese AGB können bei Bedarf angepasst werden; es gilt jeweils die zum Zeitpunkt der Reservierung
+      bzw. des Einkaufs auf dieser Seite veröffentlichte Fassung.</p>
+
+    <p style="margin-top: 1.3rem; font-size: 0.85rem;">Stand: August 2026</p>
+  </div>
+</dialog>
+</body>
+</html>
