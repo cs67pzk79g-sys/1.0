@@ -38,12 +38,11 @@ Bei künftigen Änderungen im Blick behalten und den Nutzer an Offenes erinnern.
 Erledigt: klarer CTA · interne Links · Antwortzeitversprechen · eigene Seitentitel ·
 Karte + Anfahrt · Datenschutzseite vorhanden · Meta-Beschreibungen · Local Schema (JSON-LD) ·
 `lang="de"` · robots.txt + sitemap.xml · eigene 404-Seite · Open-Graph-Vorschaubild (`og-image.png`,
-1200×630, generiert im Design-System statt Stockfoto)
+1200×630, generiert im Design-System statt Stockfoto) · Breadcrumbs auf allen Unterseiten
+(sichtbar + BreadcrumbList-Schema) · 5 FAQs als Akkordeon auf der Startseite (+ FAQPage-Schema)
 
 | Offen | Punkt | Notiz |
 |---|---|---|
-| [ ] | Breadcrumbs | bisher nur „← Zurück zur Startseite" |
-| [ ] | 5 FAQs | Info-Karten vorhanden, aber kein FAQ-Format |
 | [ ] | Danke-Seite | Reservierung öffnet nur das Mailprogramm |
 | [ ] | Fester Kontakt-Button | Tel/Mail auf 5 Seiten, Öffnungszeiten-Seite hat keinen |
 | [ ] | Team-Fotos | derzeit Monogramm-Kreise statt Fotos |
