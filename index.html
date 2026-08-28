@@ -26,6 +26,39 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Muss ich vorher reservieren?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Nein, das ist keine Pflicht. Die vier Stehtische am Fenster halten wir immer frei — für einen schnellen Kaffee zwischen zwei Zügen reicht das meistens. Für einen festen Tisch oder größere Runden reserviert ihr am besten kurz vorab."}
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist mit Allergien und Unverträglichkeiten?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Die vollständigen Zutatenlisten liegen am Tresen aus, wir wissen bei jedem Brot genau, was drin ist. Sprecht uns einfach an."}
+    },
+    {
+      "@type": "Question",
+      "name": "Gibt es vegane Backwaren?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Ja, Roggensauerteig und Dinkelvollkorn sind zum Beispiel vegan (Badge auf der Speisekarte). Auch Hafer- und Sojamilch gibt's beim Kaffee ohne Aufpreis."}
+    },
+    {
+      "@type": "Question",
+      "name": "Wie kann ich bezahlen?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Bar oder mit Karte, EC/Kreditkarte und kontaktloses Bezahlen sind kein Problem."}
+    },
+    {
+      "@type": "Question",
+      "name": "Wie komme ich am besten zur Bäckerei?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Direkt am Bahnhofsplatz, drei Minuten zu Fuß von Gleis 1. Eigene Kundenparkplätze gibt es nicht, aber die üblichen Parkmöglichkeiten am Bahnhofsvorplatz."}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "Bakery",
   "name": "Bäckerei 2000",
   "url": "https://cs67pzk79g-sys.github.io/1.0/",
@@ -616,6 +649,31 @@
   .agb-body h3 { font-size: 1rem; margin: 1.3rem 0 0.4rem; }
   .agb-body h3:first-of-type { margin-top: 0; }
   .agb-body p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+  /* FAQ */
+  .faq-list { max-width: 44rem; margin: 0 auto; display: grid; gap: 0.75rem; }
+  .faq-item { padding: 1.1rem 1.5rem; }
+  .faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.02rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { margin: 0.9rem 0 0; color: var(--muted); font-size: 0.97rem; }
 </style>
 </head>
 <body>
@@ -633,6 +691,7 @@
       <li><a href="speisekarte.html">Speisekarte</a></li>
       <li><a href="reservierung.html">Reservierung</a></li>
       <li><a href="oeffnungszeiten.html">Öffnungszeiten</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#anfahrt">Anfahrt</a></li>
     </ul>
   </nav>
@@ -874,6 +933,37 @@
           <p>Beginnt, wenn alle anderen aufhören. Wacht über die 18 Stunden, die jedem Teig
             zustehen.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Häufig gefragt</h2>
+        <p>Die Antworten auf das, was uns am Tresen am öftesten gefragt wird.</p>
+      </div>
+      <div class="faq-list">
+        <details class="panel faq-item">
+          <summary>Muss ich vorher reservieren?</summary>
+          <p>Nein, das ist keine Pflicht. Die vier Stehtische am Fenster halten wir immer frei — für einen schnellen Kaffee zwischen zwei Zügen reicht das meistens. Für einen festen Tisch oder größere Runden reserviert ihr am besten kurz vorab.</p>
+        </details>
+        <details class="panel faq-item">
+          <summary>Was ist mit Allergien und Unverträglichkeiten?</summary>
+          <p>Die vollständigen Zutatenlisten liegen am Tresen aus, wir wissen bei jedem Brot genau, was drin ist. Sprecht uns einfach an.</p>
+        </details>
+        <details class="panel faq-item">
+          <summary>Gibt es vegane Backwaren?</summary>
+          <p>Ja, Roggensauerteig und Dinkelvollkorn sind zum Beispiel vegan (Badge auf der Speisekarte). Auch Hafer- und Sojamilch gibt's beim Kaffee ohne Aufpreis.</p>
+        </details>
+        <details class="panel faq-item">
+          <summary>Wie kann ich bezahlen?</summary>
+          <p>Bar oder mit Karte, EC/Kreditkarte und kontaktloses Bezahlen sind kein Problem.</p>
+        </details>
+        <details class="panel faq-item">
+          <summary>Wie komme ich am besten zur Bäckerei?</summary>
+          <p>Direkt am Bahnhofsplatz, drei Minuten zu Fuß von Gleis 1. Eigene Kundenparkplätze gibt es nicht, aber die üblichen Parkmöglichkeiten am Bahnhofsvorplatz.</p>
+        </details>
       </div>
     </div>
   </section>
