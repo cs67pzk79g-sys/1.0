@@ -154,15 +154,15 @@
     justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 0.5rem;
-    padding: 0.85rem 0;
+    padding: 1rem 0;
   }
 
   .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     letter-spacing: -0.01em;
     text-decoration: none;
     color: var(--ink);
@@ -171,18 +171,22 @@
 
   .nav-links {
     display: flex;
-    gap: 1.75rem;
+    gap: 2rem;
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
   .nav-links a {
     text-decoration: none;
     color: var(--muted);
     transition: color 0.15s ease;
+    position: relative;
+    padding-bottom: 2px;
   }
+  .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease; }
   .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { transform: scaleX(1); }
 
   /* Buttons */
   .btn {
@@ -605,7 +609,7 @@
 <header>
   <nav class="wrap nav">
     <div class="logo">
-      <svg class="logo-mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <svg class="logo-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <path d="M5 22C5 13 9.5 7 16 7C22.5 7 27 13 27 22C27 25.3 22 27 16 27C10 27 5 25.3 5 22Z" fill="var(--accent)"/>
         <path d="M10.5 12.5L14 19M16 11V18.5M21.5 12.5L18 19" stroke="var(--bg)" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
