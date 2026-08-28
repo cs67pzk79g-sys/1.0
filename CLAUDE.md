@@ -42,11 +42,10 @@ Karte + Anfahrt · Datenschutzseite vorhanden · Meta-Beschreibungen · Local Sc
 (sichtbar + BreadcrumbList-Schema) · 5 FAQs als Akkordeon auf der Startseite (+ FAQPage-Schema) ·
 Danke-Seite (`danke.html`) nach dem Absenden der Reservierung, mit Fallback-Kontakt falls sich
 kein Mailprogramm öffnet · fester Kontakt-Button (schwebend, unten rechts, Anrufen/E-Mail-Menü)
-auf allen 8 Seiten
+auf allen 8 Seiten · Team-Avataren als rollenbezogene Icon-Illustrationen (Brotlaib, Cupcake,
+Kaffeetasse, Mond) statt Monogramm-Kreisen
 
-| Offen | Punkt | Notiz |
-|---|---|---|
-| [ ] | Team-Fotos | derzeit Monogramm-Kreise statt Fotos |
+Launch-Checkliste ist damit vollständig abgearbeitet — keine offenen Punkte mehr.
 
 Bewusst nicht umgesetzt:
 
@@ -58,3 +57,8 @@ Bewusst nicht umgesetzt:
   Inline-SVG mit `aria-hidden` (Ausnahme: `og-image.png`, ein generiertes Social-Media-
   Vorschaubild, das nie im Seiteninhalt selbst angezeigt wird und daher kein Alt braucht —
   `og:image:alt` ist trotzdem gesetzt)
+- **Team-Fotos aus Stock-Bilddatenbanken** — verletzt die Regel „keine Stockfotos als
+  unser Team" (siehe oben): ein Stockfoto einer echten, fremden Person unter einem
+  erfundenen Namen zu zeigen, stellt diese Person fälschlich als echte Mitarbeiterin/
+  echten Mitarbeiter dar. Stattdessen: rollenbezogene Icon-Illustrationen im
+  Design-System der Seite (siehe Team-Sektion auf `index.html`).
