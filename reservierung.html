@@ -547,6 +547,9 @@
       + "?subject=" + encodeURIComponent(subject)
       + "&body=" + encodeURIComponent(bodyLines.join("\n"));
     window.location.href = mailto;
+    setTimeout(function () {
+      window.location.href = "danke.html";
+    }, 300);
     return false;
   }
 </script>

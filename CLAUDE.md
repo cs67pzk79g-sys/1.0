@@ -39,11 +39,12 @@ Erledigt: klarer CTA · interne Links · Antwortzeitversprechen · eigene Seiten
 Karte + Anfahrt · Datenschutzseite vorhanden · Meta-Beschreibungen · Local Schema (JSON-LD) ·
 `lang="de"` · robots.txt + sitemap.xml · eigene 404-Seite · Open-Graph-Vorschaubild (`og-image.png`,
 1200×630, generiert im Design-System statt Stockfoto) · Breadcrumbs auf allen Unterseiten
-(sichtbar + BreadcrumbList-Schema) · 5 FAQs als Akkordeon auf der Startseite (+ FAQPage-Schema)
+(sichtbar + BreadcrumbList-Schema) · 5 FAQs als Akkordeon auf der Startseite (+ FAQPage-Schema) ·
+Danke-Seite (`danke.html`) nach dem Absenden der Reservierung, mit Fallback-Kontakt falls sich
+kein Mailprogramm öffnet
 
 | Offen | Punkt | Notiz |
 |---|---|---|
-| [ ] | Danke-Seite | Reservierung öffnet nur das Mailprogramm |
 | [ ] | Fester Kontakt-Button | Tel/Mail auf 5 Seiten, Öffnungszeiten-Seite hat keinen |
 | [ ] | Team-Fotos | derzeit Monogramm-Kreise statt Fotos |
 
