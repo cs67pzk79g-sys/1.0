@@ -22,6 +22,8 @@ Alle Inhalte sind erfunden. Konsistent gehaltene Eckdaten:
 - **Das Layout der Datum-/Uhrzeit-Felder in `reservierung.html` nicht anfassen** —
   feste 9.5rem je Feld, zentriert, 1.75rem Abstand, Umbruch bei 600px. Hat mehrere
   Anläufe gekostet. Kein zweispaltiges Seitenraster, das die Formularbreite verringert.
+- **PRs nach Fertigstellung selbstständig mergen** — nicht erst nachfragen. Der Nutzer
+  möchte das standardmäßig so (28.08.2026 bestätigt).
 
 ## Offene Vorhaben (vom Nutzer)
 
