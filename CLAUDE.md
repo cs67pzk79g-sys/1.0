@@ -41,11 +41,11 @@ Karte + Anfahrt · Datenschutzseite vorhanden · Meta-Beschreibungen · Local Sc
 1200×630, generiert im Design-System statt Stockfoto) · Breadcrumbs auf allen Unterseiten
 (sichtbar + BreadcrumbList-Schema) · 5 FAQs als Akkordeon auf der Startseite (+ FAQPage-Schema) ·
 Danke-Seite (`danke.html`) nach dem Absenden der Reservierung, mit Fallback-Kontakt falls sich
-kein Mailprogramm öffnet
+kein Mailprogramm öffnet · fester Kontakt-Button (schwebend, unten rechts, Anrufen/E-Mail-Menü)
+auf allen 8 Seiten
 
 | Offen | Punkt | Notiz |
 |---|---|---|
-| [ ] | Fester Kontakt-Button | Tel/Mail auf 5 Seiten, Öffnungszeiten-Seite hat keinen |
 | [ ] | Team-Fotos | derzeit Monogramm-Kreise statt Fotos |
 
 Bewusst nicht umgesetzt:
